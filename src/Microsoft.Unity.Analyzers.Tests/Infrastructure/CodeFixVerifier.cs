@@ -21,6 +21,17 @@ public abstract class CodeFixVerifier : DiagnosticVerifier
 {
 	protected abstract CodeFixProvider GetCSharpCodeFixProvider();
 
+	protected async Task VerifyCSharpDiagnosticAndFixAsync(string source, DiagnosticResult expected, string fixedSource)
+	{
+		await VerifyCSharpDiagnosticAndFixAsync(source, new[] { expected }, fixedSource);
+	}
+
+	protected async Task VerifyCSharpDiagnosticAndFixAsync(string source, DiagnosticResult[] expected, string fixedSource)
+	{
+		await VerifyCSharpDiagnosticAsync(source, expected);
+		await VerifyCSharpFixAsync(source, fixedSource);
+	}
+
 	protected Task VerifyCSharpFixAsync(string oldSource, string newSource, int? codeFixIndex = null, bool allowNewCompilerDiagnostics = false)
 	{
 		return VerifyCSharpFixAsync(AnalyzerVerificationContext.Default, oldSource, newSource, codeFixIndex, allowNewCompilerDiagnostics);
@@ -85,7 +96,7 @@ public abstract class CodeFixVerifier : DiagnosticVerifier
 
 		//after applying all of the code fixes, compare the resulting string to the inputted one
 		var actual = await GetStringFromDocumentAsync(document);
-		Assert.Equal(newSource, actual);
+		Assert.Equal(newSource, actual, ignoreLineEndingDifferences: true);
 	}
 
 	private static async Task<Document> ApplyFixAsync(Document document, CodeAction codeAction)

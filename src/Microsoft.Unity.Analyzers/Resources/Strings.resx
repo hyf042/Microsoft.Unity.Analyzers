@@ -614,4 +614,28 @@
   <data name="GetLocalPositionAndRotationDiagnosticTitle" xml:space="preserve">
     <value>Inefficient localPosition/localRotation read</value>
   </data>
+  <data name="BeyondNamingRulesCodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondNamingRulesDiagnosticDescription" xml:space="preserve">
+    <value>TODO: Add description.</value>
+  </data>
+  <data name="BeyondNamingRulesDiagnosticMessageFormat" xml:space="preserve">
+    <value>TODO: Add Message format</value>
+  </data>
+  <data name="BeyondNamingRulesDiagnosticTitle" xml:space="preserve">
+    <value>TODO: Add title</value>
+  </data>
+  <data name="BeyondBracesMustNotBeOmittedCodeFixTitle" xml:space="preserve">
+    <value>Wrap with braces</value>
+  </data>
+  <data name="BeyondBracesMustNotBeOmittedDiagnosticDescription" xml:space="preserve">
+    <value>The opening and closing braces for a C# statement have been omitted.</value>
+  </data>
+  <data name="BeyondBracesMustNotBeOmittedDiagnosticMessageFormat" xml:space="preserve">
+    <value>Braces should not be omitted</value>
+  </data>
+  <data name="BeyondBracesMustNotBeOmittedDiagnosticTitle" xml:space="preserve">
+    <value>Braces should not be omitted</value>
+  </data>
 </root>

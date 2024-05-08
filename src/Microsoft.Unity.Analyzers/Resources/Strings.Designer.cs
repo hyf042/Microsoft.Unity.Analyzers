@@ -88,6 +88,78 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wrap with braces.
+        /// </summary>
+        internal static string BeyondBracesMustNotBeOmittedCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opening and closing braces for a C# statement have been omitted..
+        /// </summary>
+        internal static string BeyondBracesMustNotBeOmittedDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Braces should not be omitted.
+        /// </summary>
+        internal static string BeyondBracesMustNotBeOmittedDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Braces should not be omitted.
+        /// </summary>
+        internal static string BeyondBracesMustNotBeOmittedDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add code fix title.
+        /// </summary>
+        internal static string BeyondNamingRulesCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondNamingRulesCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add description..
+        /// </summary>
+        internal static string BeyondNamingRulesDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondNamingRulesDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add Message format.
+        /// </summary>
+        internal static string BeyondNamingRulesDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondNamingRulesDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add title.
+        /// </summary>
+        internal static string BeyondNamingRulesDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondNamingRulesDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Component &apos;{0}&apos; should not be instantiated directly..
         /// </summary>
         internal static string CreateComponentInstanceDiagnosticMessageFormat {
