@@ -263,10 +263,14 @@ public sealed class Camera : MonoBehaviour
 	{
 		const string test = @"
 using UnityEngine;
+using UnityEngine.Animations;
 
 class StateMachine : StateMachineBehaviour
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+    }
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, AnimatorControllerPlayable controller)
     {
     }
 }

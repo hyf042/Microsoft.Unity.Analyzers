@@ -180,6 +180,14 @@ namespace UnityEngine
 		public virtual void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) { }
 		public virtual void OnStateMachineEnter(Animator animator, int stateMachinePathHash) { }
 		public virtual void OnStateMachineExit(Animator animator, int stateMachinePathHash) { }
+
+		public virtual void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateIK(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateMove(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateMachineEnter(Animator animator, int stateMachinePathHash, Animations.AnimatorControllerPlayable controller) { }
+		public virtual void OnStateMachineExit(Animator animator, int stateMachinePathHash, Animations.AnimatorControllerPlayable controller) { }
 	}
 
 	class Texture2D
@@ -595,6 +603,11 @@ namespace UnityEngine
 		[PhysicsAllocMethodUsage] static RaycastHit[] BoxCastAll(Vector3 center, Vector3 halfExtents, Vector3 direction, Quaternion orientation) { return null; }
 		[PhysicsAllocMethodUsage] static RaycastHit[] BoxCastAll(Vector3 center, Vector3 halfExtents, Vector3 direction) { return null; }
 	}
+}
+
+namespace UnityEngine.Animations
+{
+	class AnimatorControllerPlayable { }
 }
 
 namespace UnityEngine.EventSystems
