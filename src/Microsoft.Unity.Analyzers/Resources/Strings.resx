@@ -638,4 +638,16 @@
   <data name="BeyondBracesMustNotBeOmittedDiagnosticTitle" xml:space="preserve">
     <value>Braces should not be omitted</value>
   </data>
+  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle" xml:space="preserve">
+    <value>Align braces</value>
+  </data>
+  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription" xml:space="preserve">
+    <value>The opening or closing brace within a C# statement, element, or expression is not placed on its own line.</value>
+  </data>
+  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat" xml:space="preserve">
+    <value>Braces for multi-line statements should not share line</value>
+  </data>
+  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle" xml:space="preserve">
+    <value>Braces for multi-line statements should not share line</value>
+  </data>
 </root>

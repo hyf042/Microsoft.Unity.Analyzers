@@ -88,6 +88,42 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Align braces.
+        /// </summary>
+        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opening or closing brace within a C# statement, element, or expression is not placed on its own line..
+        /// </summary>
+        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
+        /// </summary>
+        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
+        /// </summary>
+        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrap with braces.
         /// </summary>
         internal static string BeyondBracesMustNotBeOmittedCodeFixTitle {

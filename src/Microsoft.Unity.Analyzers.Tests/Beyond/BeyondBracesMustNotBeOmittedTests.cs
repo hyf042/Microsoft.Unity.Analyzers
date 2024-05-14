@@ -30,8 +30,12 @@ public class BeyondBracesMustNotBeOmittedTests : BaseCodeFixVerifierTest<BeyondB
 			yield return new[] { "foreach (var j in new[] { 1, 2, 3 })" };
 			yield return new[] { "lock (this)" };
 			yield return new[] { "using (this)" };
+			yield return new[] { "fixed (byte* ptr = new byte[10])" };
 		}
 	}
+
+	protected override bool IgnoreLineEndingDifferences => true;
+	protected override bool AllowUnsafe => true;
 
 	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
 
@@ -444,7 +448,7 @@ public class Foo
 		var testCodeFormat = @"using System.Diagnostics;
 public class Foo : System.IDisposable
 {
-    public void Bar(int i)
+    public unsafe void Bar(int i)
     {
         #STATEMENT#
             Debug.Assert(true);
@@ -460,7 +464,7 @@ public class Foo : System.IDisposable
 		var fixedTestCodeFormat = @"using System.Diagnostics;
 public class Foo : System.IDisposable
 {
-    public void Bar(int i)
+    public unsafe void Bar(int i)
     {
         #STATEMENT#
         {

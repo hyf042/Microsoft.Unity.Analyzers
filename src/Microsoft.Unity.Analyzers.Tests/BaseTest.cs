@@ -29,10 +29,9 @@ interface IFailure
 	void FixedUpdate();
 }
 
-class Failure : MonoBehaviour, IFailure {
-
-    void IFailure.FixedUpdate() {
-    }
+class Failure : MonoBehaviour, IFailure
+{
+    void IFailure.FixedUpdate() {}
 }
 ";
 

@@ -24,6 +24,10 @@ public abstract class DiagnosticVerifier
 	private const string CSharpDefaultFileExt = "cs";
 	private const string TestProjectName = "TestProject";
 
+	protected virtual bool AllowUnsafe => false;
+	protected virtual bool ExpectErrorAsDiagnosticResult => false;
+	protected virtual string[] DisabledDiagnostics => [];
+
 	protected abstract DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer();
 
 	protected virtual IEnumerable<DiagnosticAnalyzer> GetRelatedAnalyzers(DiagnosticAnalyzer analyzer)
@@ -234,8 +238,17 @@ public abstract class DiagnosticVerifier
 			var analyzerExceptions = new List<Exception>();
 			var analyzerOptions = new CompilationWithAnalyzersOptions(options, (e, _, _) => analyzerExceptions.Add(e), true, true, true);
 
-			var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, reportSuppressedDiagnostics: true);
+			var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, reportSuppressedDiagnostics: true, allowUnsafe: AllowUnsafe);
 			var specificDiagnosticOptions = compilationOptions.SpecificDiagnosticOptions;
+
+			// Set disabled diagnostics as suppressed for this verifier
+			if (DisabledDiagnostics != null)
+			{
+				foreach (var diagnosticId in DisabledDiagnostics)
+				{
+					specificDiagnosticOptions = specificDiagnosticOptions.SetItem(diagnosticId, ReportDiagnostic.Suppress);
+				}
+			}
 
 			// Force all tested and related diagnostics to be enabled
 			foreach (var descriptor in analyzers.SelectMany(a => a.SupportedDiagnostics))
@@ -247,15 +260,21 @@ public abstract class DiagnosticVerifier
 
 			var allDiagnostics = await compilationWithAnalyzers.GetAllDiagnosticsAsync();
 			var errors = allDiagnostics.Where(d => d.Severity == DiagnosticSeverity.Error).ToList();
-			foreach (var error in errors)
-				Assert.Fail($"Line {error.Location.GetLineSpan().StartLinePosition.Line}: {error.GetMessage()}");
+			if (!ExpectErrorAsDiagnosticResult)
+			{
+				foreach (var error in errors)
+					Assert.Fail($"Line {error.Location.GetLineSpan().StartLinePosition.Line}: {error.GetMessage()}");
+			}
 
 			foreach (var analyzerException in analyzerExceptions)
 				Assert.Fail(analyzerException.Message);
 
-			var diags = allDiagnostics
-				.Except(errors)
-				.Where(d => d.Location.IsInSource); //only keep diagnostics related to a source location
+			var diags = allDiagnostics;
+			if (ExpectErrorAsDiagnosticResult)
+			{
+				diags.Except(errors);
+			}
+			diags.Where(d => d.Location.IsInSource); //only keep diagnostics related to a source location
 
 			foreach (var diag in diags)
 			{
