@@ -1,4 +1,5 @@
-﻿using Microsoft.Unity.Analyzers.StyleCop;
+﻿using System.Collections.Immutable;
+using Microsoft.Unity.Analyzers.StyleCop;
 
 namespace Microsoft.Unity.Analyzers
 {
@@ -11,5 +12,6 @@ namespace Microsoft.Unity.Analyzers
 		internal const bool AllowDoWhileOnClosingBrace = true;
 		internal readonly static IndentationSettings IndentationSettings =
 			new IndentationSettings(4 /* indentationSize */, 4 /* tabSize */, false /* useTabs */);
+		internal readonly static ImmutableArray<string> AllowedNamespaceComponents = ImmutableArray<string>.Empty;
 	}
 }

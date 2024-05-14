@@ -21,6 +21,9 @@ using Microsoft.Unity.Analyzers.StyleCop;
 
 namespace Microsoft.Unity.Analyzers;
 
+/// <summary>
+/// The code contains a tab or space character which is not consistent with the current project settings.
+/// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class BeyondUseTabsCorrectlyAnalyzer : DiagnosticAnalyzer
 {

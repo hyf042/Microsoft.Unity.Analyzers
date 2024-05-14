@@ -379,6 +379,9 @@
   <data name="ReflectionDiagnosticTitle" xml:space="preserve">
     <value>System.Reflection features in performance critical messages</value>
   </data>
+  <data name="RenameToCodeFix" xml:space="preserve">
+    <value>Rename To '{0}'</value>
+  </data>
   <data name="SetPositionAndRotationCodeFixTitle" xml:space="preserve">
     <value>Use SetPositionAndRotation() method</value>
   </data>
@@ -614,18 +617,6 @@
   <data name="GetLocalPositionAndRotationDiagnosticTitle" xml:space="preserve">
     <value>Inefficient localPosition/localRotation read</value>
   </data>
-  <data name="BeyondNamingRulesCodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
-  </data>
-  <data name="BeyondNamingRulesDiagnosticDescription" xml:space="preserve">
-    <value>TODO: Add description.</value>
-  </data>
-  <data name="BeyondNamingRulesDiagnosticMessageFormat" xml:space="preserve">
-    <value>TODO: Add Message format</value>
-  </data>
-  <data name="BeyondNamingRulesDiagnosticTitle" xml:space="preserve">
-    <value>TODO: Add title</value>
-  </data>
   <data name="BeyondBracesMustNotBeOmittedCodeFixTitle" xml:space="preserve">
     <value>Wrap with braces</value>
   </data>
@@ -661,5 +652,89 @@
   </data>
   <data name="BeyondUseTabsCorrectlyDiagnosticTitle" xml:space="preserve">
     <value>Use tabs correctly</value>
+  </data>
+  <data name="BeyondElementMustNamedUpperPascalCaseCodeFixTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# element does not use UpperPascalCase.</value>
+  </data>
+  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat" xml:space="preserve">
+    <value>Element should be named with UpperPascalCase</value>
+  </data>
+  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticTitle" xml:space="preserve">
+    <value>Element '{0}' should be named with UpperPascalCase</value>
+  </data>
+  <data name="BeyondElementMustNamedLowerCamelCaseCodeFixTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# element does not use lowerCamelCase.</value>
+  </data>
+  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat" xml:space="preserve">
+    <value>Element should be named with lowerCamelCase</value>
+  </data>
+  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticTitle" xml:space="preserve">
+    <value>Element '{0}' should be named with lowerCamelCase</value>
+  </data>
+  <data name="BeyondInterfaceNamesMustBeginWithICodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticDescription" xml:space="preserve">
+    <value>TODO: Add description.</value>
+  </data>
+  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat" xml:space="preserve">
+    <value>TODO: Add Message format</value>
+  </data>
+  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticTitle" xml:space="preserve">
+    <value>TODO: Add title</value>
+  </data>
+  <data name="BeyondElementMustNamedAllCapsCodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondElementMustNamedAllCapsDiagnosticDescription" xml:space="preserve">
+    <value>TODO: Add description.</value>
+  </data>
+  <data name="BeyondElementMustNamedAllCapsDiagnosticMessageFormat" xml:space="preserve">
+    <value>TODO: Add Message format</value>
+  </data>
+  <data name="BeyondElementMustNamedAllCapsDiagnosticTitle" xml:space="preserve">
+    <value>TODO: Add title</value>
+  </data>
+  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
+    <value>The name of a private method does not use _UpperPascalCase.</value>
+  </data>
+  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
+    <value>Private method {0} should be named with _UpperPascalCase</value>
+  </data>
+  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
+    <value>Private method {0} should be named with _UpperPascalCase</value>
+  </data>
+  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription" xml:space="preserve">
+    <value>TODO: Add description.</value>
+  </data>
+  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat" xml:space="preserve">
+    <value>TODO: Add Message format</value>
+  </data>
+  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle" xml:space="preserve">
+    <value>TODO: Add title</value>
+  </data>
+  <data name="BeyondStaticFieldNamesMustBeginWithSCodeFixTitle" xml:space="preserve">
+    <value>TODO: Add code fix title</value>
+  </data>
+  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription" xml:space="preserve">
+    <value>TODO: Add description.</value>
+  </data>
+  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat" xml:space="preserve">
+    <value>TODO: Add Message format</value>
+  </data>
+  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle" xml:space="preserve">
+    <value>TODO: Add title</value>
   </data>
 </root>

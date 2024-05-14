@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondNamingRulesTests : BaseCodeFixVerifierTest<BeyondNamingRulesAnalyzer, BeyondNamingRulesCodeFix>
+public class BeyondElementMustNamedAllCapsTests : BaseCodeFixVerifierTest<BeyondElementMustNamedAllCapsAnalyzer, BeyondElementMustNamedAllCapsCodeFix>
 {
 	[Fact]
 	public async Task Test()
@@ -21,7 +21,9 @@ class Camera : MonoBehaviour
 }
 ";
 
-		await VerifyCSharpDiagnosticAsync(test);
+		var diagnostic = ExpectDiagnostic();
+
+		await VerifyCSharpDiagnosticAsync(test, diagnostic);
 
 		const string fixedTest = @"
 using UnityEngine;

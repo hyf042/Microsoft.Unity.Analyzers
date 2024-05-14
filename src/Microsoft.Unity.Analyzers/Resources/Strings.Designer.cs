@@ -162,36 +162,252 @@ namespace Microsoft.Unity.Analyzers.Resources {
         /// <summary>
         ///   Looks up a localized string similar to TODO: Add code fix title.
         /// </summary>
-        internal static string BeyondNamingRulesCodeFixTitle {
+        internal static string BeyondElementMustNamedAllCapsCodeFixTitle {
             get {
-                return ResourceManager.GetString("BeyondNamingRulesCodeFixTitle", resourceCulture);
+                return ResourceManager.GetString("BeyondElementMustNamedAllCapsCodeFixTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to TODO: Add description..
         /// </summary>
-        internal static string BeyondNamingRulesDiagnosticDescription {
+        internal static string BeyondElementMustNamedAllCapsDiagnosticDescription {
             get {
-                return ResourceManager.GetString("BeyondNamingRulesDiagnosticDescription", resourceCulture);
+                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to TODO: Add Message format.
         /// </summary>
-        internal static string BeyondNamingRulesDiagnosticMessageFormat {
+        internal static string BeyondElementMustNamedAllCapsDiagnosticMessageFormat {
             get {
-                return ResourceManager.GetString("BeyondNamingRulesDiagnosticMessageFormat", resourceCulture);
+                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to TODO: Add title.
         /// </summary>
-        internal static string BeyondNamingRulesDiagnosticTitle {
+        internal static string BeyondElementMustNamedAllCapsDiagnosticTitle {
             get {
-                return ResourceManager.GetString("BeyondNamingRulesDiagnosticTitle", resourceCulture);
+                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string BeyondElementMustNamedLowerCamelCaseCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# element does not use lowerCamelCase..
+        /// </summary>
+        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element should be named with lowerCamelCase.
+        /// </summary>
+        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with lowerCamelCase.
+        /// </summary>
+        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string BeyondElementMustNamedUpperPascalCaseCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# element does not use UpperPascalCase..
+        /// </summary>
+        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element should be named with UpperPascalCase.
+        /// </summary>
+        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with UpperPascalCase.
+        /// </summary>
+        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add code fix title.
+        /// </summary>
+        internal static string BeyondInterfaceNamesMustBeginWithICodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithICodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add description..
+        /// </summary>
+        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add Message format.
+        /// </summary>
+        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add title.
+        /// </summary>
+        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add code fix title.
+        /// </summary>
+        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add description..
+        /// </summary>
+        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add Message format.
+        /// </summary>
+        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add title.
+        /// </summary>
+        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add code fix title.
+        /// </summary>
+        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a private method does not use _UpperPascalCase..
+        /// </summary>
+        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private method {0} should be named with _UpperPascalCase.
+        /// </summary>
+        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private method {0} should be named with _UpperPascalCase.
+        /// </summary>
+        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add code fix title.
+        /// </summary>
+        internal static string BeyondStaticFieldNamesMustBeginWithSCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add description..
+        /// </summary>
+        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add Message format.
+        /// </summary>
+        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TODO: Add title.
+        /// </summary>
+        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle", resourceCulture);
             }
         }
         
@@ -1065,6 +1281,15 @@ namespace Microsoft.Unity.Analyzers.Resources {
         internal static string ReflectionDiagnosticTitle {
             get {
                 return ResourceManager.GetString("ReflectionDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename To &apos;{0}&apos;.
+        /// </summary>
+        internal static string RenameToCodeFix {
+            get {
+                return ResourceManager.GetString("RenameToCodeFix", resourceCulture);
             }
         }
         

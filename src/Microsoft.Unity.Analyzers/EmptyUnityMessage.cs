@@ -53,26 +53,31 @@ public class EmptyUnityMessageAnalyzer : DiagnosticAnalyzer
 		if (method.Body.Statements.Count > 0)
 			return;
 
+		if (!CheckIsUnityMessage(context, method))
+			return;
+
+		context.ReportDiagnostic(Diagnostic.Create(Rule, method.Identifier.GetLocation(), method.Identifier.ValueText));
+	}
+
+	internal static bool CheckIsUnityMessage(SyntaxNodeAnalysisContext context, MethodDeclarationSyntax method)
+	{
 		var classDeclaration = method.FirstAncestorOrSelf<ClassDeclarationSyntax>();
 		if (classDeclaration == null)
-			return;
+			return false;
 
 		var typeSymbol = context.SemanticModel.GetDeclaredSymbol(classDeclaration);
 		if (typeSymbol == null)
-			return;
+			return false;
 
 		var scriptInfo = new ScriptInfo(typeSymbol);
 		if (!scriptInfo.HasMessages)
-			return;
+			return false;
 
 		var symbol = context.SemanticModel.GetDeclaredSymbol(method);
 		if (symbol == null)
-			return;
+			return false;
 
-		if (!scriptInfo.IsMessage(symbol))
-			return;
-
-		context.ReportDiagnostic(Diagnostic.Create(Rule, method.Identifier.GetLocation(), symbol.Name));
+		return scriptInfo.IsMessage(symbol);
 	}
 }
 
