@@ -39,7 +39,7 @@ internal class IndentationSettings
 	/// </summary>
 	protected internal IndentationSettings(int indentationSize, int tabSize, bool useTabs)
 	{
-		this.indentationSize = IndentationSize;
+		this.indentationSize = indentationSize;
 		this.tabSize = tabSize;
 		this.useTabs = useTabs;
 	}

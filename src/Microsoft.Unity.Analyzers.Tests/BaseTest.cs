@@ -26,7 +26,7 @@ using UnityEngine;
 
 interface IFailure
 {
-	void FixedUpdate();
+    void FixedUpdate();
 }
 
 class Failure : MonoBehaviour, IFailure

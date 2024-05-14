@@ -650,4 +650,16 @@
   <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle" xml:space="preserve">
     <value>Braces for multi-line statements should not share line</value>
   </data>
+  <data name="BeyondUseTabsCorrectlyCodeFixTitle" xml:space="preserve">
+    <value>Fix tabs</value>
+  </data>
+  <data name="BeyondUseTabsCorrectlyDiagnosticDescription" xml:space="preserve">
+    <value>The code contains a tab or space character which is not consistent with the current project settings.</value>
+  </data>
+  <data name="BeyondUseTabsCorrectlyDiagnosticMessageFormat" xml:space="preserve">
+    <value>Tabs and spaces should be used correctly</value>
+  </data>
+  <data name="BeyondUseTabsCorrectlyDiagnosticTitle" xml:space="preserve">
+    <value>Use tabs correctly</value>
+  </data>
 </root>

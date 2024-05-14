@@ -62,7 +62,6 @@ namespace Microsoft.Unity.Analyzers;
 public class BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer : DiagnosticAnalyzer
 {
 	private const string RuleId = "BEY0002";
-	internal const bool AllowDoWhileOnClosingBrace = true;
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
@@ -294,7 +293,7 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer : Diagno
 					// Because the default Visual Studio code completion snippet for a do-while loop
 					// places the while expression on the same line as the closing brace, some users
 					// may want to allow that and not have BEY0002 report it as a style error.
-					if (AllowDoWhileOnClosingBrace)
+					if (BeyondSettings.AllowDoWhileOnClosingBrace)
 					{
 						if (openBraceToken.Parent.IsKind(SyntaxKind.Block)
 							&& openBraceToken.Parent.Parent.IsKind(SyntaxKind.DoStatement))
@@ -320,13 +319,11 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer : Diagno
 [ExportCodeFixProvider(LanguageNames.CSharp)]
 public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFixProvider
 {
-	private readonly static IndentationSettings IndentationSettings = new IndentationSettings();
-
 	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
-	public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context)
+	public sealed override Task RegisterCodeFixesAsync(CodeFixContext context)
 	{
 		foreach (Diagnostic diagnostic in context.Diagnostics)
 		{
@@ -337,6 +334,8 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 					nameof(BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix)),
 				diagnostic);
 		}
+
+		return Task.CompletedTask;
 	}
 
 	private static async Task<Document> GetTransformedDocumentAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
@@ -389,7 +388,7 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 						AddReplacement(tokenReplacements, previousToken, previousToken.WithTrailingTrivia(previousTokenNewTrailingTrivia));
 					}
 
-					braceReplacementToken = braceReplacementToken.WithLeadingTrivia(IndentationHelper.GenerateWhitespaceTrivia(IndentationSettings, indentationSteps));
+					braceReplacementToken = braceReplacementToken.WithLeadingTrivia(IndentationHelper.GenerateWhitespaceTrivia(BeyondSettings.IndentationSettings, indentationSteps));
 				}
 
 				// Check if we need to apply a fix after the brace. No fix is needed when:
@@ -400,7 +399,7 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 				var nextToken = braceToken.GetNextToken();
 				var nextTokenLine = nextToken.IsKind(SyntaxKind.None) ? -1 : LocationHelpers.GetLineSpan(nextToken).StartLinePosition.Line;
 				var isMultiDimensionArrayInitializer = braceToken.IsKind(SyntaxKind.OpenBraceToken) && braceToken.Parent.IsKind(SyntaxKind.ArrayInitializerExpression) && braceToken.Parent.Parent.IsKind(SyntaxKind.ArrayInitializerExpression);
-				var allowDoWhileOnClosingBrace = BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer.AllowDoWhileOnClosingBrace && nextToken.IsKind(SyntaxKind.WhileKeyword) && (braceToken.Parent?.IsKind(SyntaxKind.Block) ?? false) && (braceToken.Parent.Parent?.IsKind(SyntaxKind.DoStatement) ?? false);
+				var allowDoWhileOnClosingBrace = BeyondSettings.AllowDoWhileOnClosingBrace && nextToken.IsKind(SyntaxKind.WhileKeyword) && (braceToken.Parent?.IsKind(SyntaxKind.Block) ?? false) && (braceToken.Parent.Parent?.IsKind(SyntaxKind.DoStatement) ?? false);
 
 				if ((nextTokenLine == braceLine) &&
 					(!braceToken.IsKind(SyntaxKind.CloseBraceToken) || !IsValidFollowingToken(nextToken)) &&
@@ -426,7 +425,7 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 							newIndentationSteps = Math.Max(0, newIndentationSteps - 1);
 						}
 
-						AddReplacement(tokenReplacements, nextToken, nextToken.WithLeadingTrivia(IndentationHelper.GenerateWhitespaceTrivia(IndentationSettings, newIndentationSteps)));
+						AddReplacement(tokenReplacements, nextToken, nextToken.WithLeadingTrivia(IndentationHelper.GenerateWhitespaceTrivia(BeyondSettings.IndentationSettings, newIndentationSteps)));
 					}
 
 					braceReplacementToken = braceReplacementToken.WithTrailingTrivia(newTrailingTrivia);
@@ -524,7 +523,7 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 			token = token.GetPreviousToken();
 		}
 
-		return IndentationHelper.GetIndentationSteps(IndentationSettings, token);
+		return IndentationHelper.GetIndentationSteps(BeyondSettings.IndentationSettings, token);
 	}
 
 	private static bool ContainsStartOfLine(SyntaxToken token, int startLine)

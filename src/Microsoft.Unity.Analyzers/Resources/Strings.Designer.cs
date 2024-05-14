@@ -196,6 +196,42 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fix tabs.
+        /// </summary>
+        internal static string BeyondUseTabsCorrectlyCodeFixTitle {
+            get {
+                return ResourceManager.GetString("BeyondUseTabsCorrectlyCodeFixTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The code contains a tab or space character which is not consistent with the current project settings..
+        /// </summary>
+        internal static string BeyondUseTabsCorrectlyDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabs and spaces should be used correctly.
+        /// </summary>
+        internal static string BeyondUseTabsCorrectlyDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use tabs correctly.
+        /// </summary>
+        internal static string BeyondUseTabsCorrectlyDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Component &apos;{0}&apos; should not be instantiated directly..
         /// </summary>
         internal static string CreateComponentInstanceDiagnosticMessageFormat {
