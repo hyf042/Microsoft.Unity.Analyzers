@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System;
@@ -21,19 +16,19 @@ using Microsoft.Unity.Analyzers.StyleCop;
 namespace Microsoft.Unity.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondStaticFieldNamesMustBeginWithSAnalyzer : DiagnosticAnalyzer
+public class BEY0009StaticFieldNamesMustBeginWithSAnalyzer : DiagnosticAnalyzer
 {
-	private const string RuleId = "BEY0010";
+	private const string RuleId = "BEY0009";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle,
-		messageFormat: Strings.BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat,
+		title: Strings.BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle,
+		messageFormat: Strings.BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription);
+		description: Strings.BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> FieldDeclarationAction = HandleFieldDeclaration;
 
@@ -64,6 +59,12 @@ public class BeyondStaticFieldNamesMustBeginWithSAnalyzer : DiagnosticAnalyzer
 		if (syntax.Modifiers.Any(SyntaxKind.ReadOnlyKeyword))
 		{
 			// this diagnostic does not apply to readonly static fields
+			return;
+		}
+
+		if (syntax.Modifiers.Any(SyntaxKind.PublicKeyword) || syntax.Modifiers.Any(SyntaxKind.InternalKeyword))
+		{
+			// this diagnostic does not apply to public or internal static fields
 			return;
 		}
 
@@ -102,9 +103,9 @@ public class BeyondStaticFieldNamesMustBeginWithSAnalyzer : DiagnosticAnalyzer
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondStaticFieldNamesMustBeginWithSCodeFix : CodeFixProvider
+public class BEY0009StaticFieldNamesMustBeginWithSCodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondStaticFieldNamesMustBeginWithSAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0009StaticFieldNamesMustBeginWithSAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -112,34 +113,19 @@ public class BeyondStaticFieldNamesMustBeginWithSCodeFix : CodeFixProvider
 	{
 		foreach (var diagnostic in context.Diagnostics)
 		{
-			context.RegisterCodeFix(
-				CodeAction.Create(
-					Strings.BeyondInterfaceNamesMustBeginWithICodeFixTitle,
-					cancellationToken => CreateChangedSolutionAsync(context.Document, diagnostic, cancellationToken),
-					nameof(BeyondInterfaceNamesMustBeginWithIAnalyzer)),
-				diagnostic);
+			await CreateChangedSolutionAsync(context, context.Document, diagnostic, context.CancellationToken);
 		}
 
 		await Task.CompletedTask;
 	}
 
-	private static async Task<Solution> CreateChangedSolutionAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
+	private static async Task CreateChangedSolutionAsync(CodeFixContext context, Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
 	{
 		var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 		var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
-		string baseName;
-		if (token.ValueText.StartsWith("s_"))
-		{
-			baseName = token.ValueText;
-		}
-		else if (token.ValueText.StartsWith("_"))
-		{
-			baseName = "s" + token.ValueText;
-		}
-		else
-		{
-			baseName = "s_" + token.ValueText;
-		}
+
+		string baseName = RenameHelper.MakeFirstNotUnderscoreLower(
+			RenameHelper.AppendPrefixLetterWithUnderscore(token.ValueText, 's'), 2 /* skip leading "s_" */);
 		var index = 0;
 		var newName = baseName;
 
@@ -151,6 +137,11 @@ public class BeyondStaticFieldNamesMustBeginWithSCodeFix : CodeFixProvider
 			newName = baseName + index;
 		}
 
-		return await RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken).ConfigureAwait(false);
+		context.RegisterCodeFix(
+			CodeAction.Create(
+				string.Format(Strings.RenameToCodeFix, newName),
+				cancellationToken => RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken),
+				nameof(BEY0007InterfaceNamesMustBeginWithIAnalyzer)),
+			diagnostic);
 	}
 }

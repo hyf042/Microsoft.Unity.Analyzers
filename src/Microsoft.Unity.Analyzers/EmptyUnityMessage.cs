@@ -14,6 +14,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.Unity.Analyzers.Resources;
+using Microsoft.Unity.Analyzers.StyleCop;
 
 namespace Microsoft.Unity.Analyzers;
 
@@ -53,31 +54,10 @@ public class EmptyUnityMessageAnalyzer : DiagnosticAnalyzer
 		if (method.Body.Statements.Count > 0)
 			return;
 
-		if (!CheckIsUnityMessage(context, method))
+		if (!UnityHelper.CheckIsUnityMessage(context, method))
 			return;
 
 		context.ReportDiagnostic(Diagnostic.Create(Rule, method.Identifier.GetLocation(), method.Identifier.ValueText));
-	}
-
-	internal static bool CheckIsUnityMessage(SyntaxNodeAnalysisContext context, MethodDeclarationSyntax method)
-	{
-		var classDeclaration = method.FirstAncestorOrSelf<ClassDeclarationSyntax>();
-		if (classDeclaration == null)
-			return false;
-
-		var typeSymbol = context.SemanticModel.GetDeclaredSymbol(classDeclaration);
-		if (typeSymbol == null)
-			return false;
-
-		var scriptInfo = new ScriptInfo(typeSymbol);
-		if (!scriptInfo.HasMessages)
-			return false;
-
-		var symbol = context.SemanticModel.GetDeclaredSymbol(method);
-		if (symbol == null)
-			return false;
-
-		return scriptInfo.IsMessage(symbol);
 	}
 }
 

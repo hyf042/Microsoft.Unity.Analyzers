@@ -1,17 +1,13 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondInterfaceNamesMustBeginWithITests : BaseCodeFixVerifierTest<BeyondInterfaceNamesMustBeginWithIAnalyzer, BeyondInterfaceNamesMustBeginWithICodeFix>
+/// <summary>
+/// Unit tests for <see cref="BEY0007InterfaceNamesMustBeginWithIAnalyzer"/>.
+/// </summary>
+public class BEY0007InterfaceNamesMustBeginWithITests : BaseCodeFixVerifierTest<BEY0007InterfaceNamesMustBeginWithIAnalyzer, BEY0007InterfaceNamesMustBeginWithICodeFix>
 {
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
-
 	[Fact]
 	public async Task TestInterfaceDeclarationDoesNotStartWithIAsync()
 	{
@@ -20,7 +16,7 @@ public interface Foo
 {
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IFoo
@@ -41,7 +37,7 @@ public class Bar : Foo
 {
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IFoo
@@ -62,7 +58,7 @@ public interface iFoo
 {
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IiFoo
@@ -83,7 +79,7 @@ public class Bar
     }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
 
 		await VerifyCSharpDiagnosticAsync(testCode, expected);
 	}
@@ -141,7 +137,7 @@ public class NativeMethodsClass
     }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(6, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(6, 22);
 
 		var fixedCode = @"
 using System.Runtime.InteropServices;
@@ -191,7 +187,7 @@ public interface IFoo1
 
 public interface IFoo { }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -209,7 +205,7 @@ public interface IFoo
     int IFoo { get; }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -235,7 +231,7 @@ public class Outer
     public interface IFoo { }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -257,7 +253,7 @@ public class IFoo
     }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -283,7 +279,7 @@ public class Outer
     private int IFoo => 0;
 }";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -307,7 +303,7 @@ namespace System
 }
 ";
 
-		DiagnosticResult expected = Diagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 }

@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System;
@@ -20,19 +15,19 @@ using Microsoft.Unity.Analyzers.StyleCop;
 namespace Microsoft.Unity.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer : DiagnosticAnalyzer
+public class BEY0008PrivateMethodNamesMustBeginWithUnderscoreAnalyzer : DiagnosticAnalyzer
 {
 	private const string RuleId = "BEY0008";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle,
-		messageFormat: Strings.BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat,
+		title: Strings.BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle,
+		messageFormat: Strings.BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription);
+		description: Strings.BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> MethodDeclarationAction = HandleMethodDeclaration;
 
@@ -59,7 +54,7 @@ public class BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer : Diagnosti
 			// don't analyze non-private method.
 			return;
 		}
-		if (EmptyUnityMessageAnalyzer.CheckIsUnityMessage(context, methodDeclaration))
+		if (UnityHelper.CheckIsUnityMessage(context, methodDeclaration))
 		{
 			// don't analyze unity message.
 			return;
@@ -106,7 +101,7 @@ public class BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer : Diagnosti
 				break;
 			}
 
-			if (!char.IsUpper(stripPrefix[0]))
+			if (!char.IsUpper(stripPrefix[0]) && !char.IsDigit(stripPrefix[0]))
 			{
 				// Report the first non-underscore character is not upper case letter
 				break;
@@ -121,9 +116,9 @@ public class BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer : Diagnosti
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFix : CodeFixProvider
+public class BEY0008PrivateMethodNamesMustBeginWithUnderscoreCodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0008PrivateMethodNamesMustBeginWithUnderscoreAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -135,16 +130,14 @@ public class BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFix : CodeFixPro
 		foreach (var diagnostic in context.Diagnostics)
 		{
 			var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
-			if (string.IsNullOrEmpty(token.ValueText))
+			var originalName = token.ValueText;
+			if (string.IsNullOrEmpty(originalName))
 			{
 				continue;
 			}
 
-			var originalName = token.ValueText;
-			if (originalName[0] != '_')
-			{
-				originalName = '_' + originalName;
-			}
+			// Append prefix underscore if not present
+			originalName = RenameHelper.AppendPrefixUnderscore(originalName);
 
 			var baseName = originalName.TrimStart('_');
 			if (baseName.Length == 0)
@@ -181,7 +174,7 @@ public class BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFix : CodeFixPro
 				CodeAction.Create(
 					string.Format(Strings.RenameToCodeFix, newName),
 					cancellationToken => RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken),
-					nameof(BeyondPrivateMethodNamesMustBeginWithUnderscoreAnalyzer) + "_" + underscoreCount + "_" + index),
+					nameof(BEY0008PrivateMethodNamesMustBeginWithUnderscoreAnalyzer) + "_" + underscoreCount + "_" + index),
 				diagnostic);
 		}
 	}

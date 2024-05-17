@@ -617,124 +617,112 @@
   <data name="GetLocalPositionAndRotationDiagnosticTitle" xml:space="preserve">
     <value>Inefficient localPosition/localRotation read</value>
   </data>
-  <data name="BeyondBracesMustNotBeOmittedCodeFixTitle" xml:space="preserve">
+  <data name="BEY0001BracesMustNotBeOmittedCodeFixTitle" xml:space="preserve">
     <value>Wrap with braces</value>
   </data>
-  <data name="BeyondBracesMustNotBeOmittedDiagnosticDescription" xml:space="preserve">
+  <data name="BEY0001BracesMustNotBeOmittedDiagnosticDescription" xml:space="preserve">
     <value>The opening and closing braces for a C# statement have been omitted.</value>
   </data>
-  <data name="BeyondBracesMustNotBeOmittedDiagnosticMessageFormat" xml:space="preserve">
+  <data name="BEY0001BracesMustNotBeOmittedDiagnosticMessageFormat" xml:space="preserve">
     <value>Braces should not be omitted</value>
   </data>
-  <data name="BeyondBracesMustNotBeOmittedDiagnosticTitle" xml:space="preserve">
+  <data name="BEY0001BracesMustNotBeOmittedDiagnosticTitle" xml:space="preserve">
     <value>Braces should not be omitted</value>
   </data>
-  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle" xml:space="preserve">
+  <data name="BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFixTitle" xml:space="preserve">
     <value>Align braces</value>
   </data>
-  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription" xml:space="preserve">
+  <data name="BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticDescription" xml:space="preserve">
     <value>The opening or closing brace within a C# statement, element, or expression is not placed on its own line.</value>
   </data>
-  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat" xml:space="preserve">
+  <data name="BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat" xml:space="preserve">
     <value>Braces for multi-line statements should not share line</value>
   </data>
-  <data name="BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle" xml:space="preserve">
+  <data name="BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticTitle" xml:space="preserve">
     <value>Braces for multi-line statements should not share line</value>
   </data>
-  <data name="BeyondUseTabsCorrectlyCodeFixTitle" xml:space="preserve">
+  <data name="BEY0003UseTabsCorrectlyCodeFixTitle" xml:space="preserve">
     <value>Fix tabs</value>
   </data>
-  <data name="BeyondUseTabsCorrectlyDiagnosticDescription" xml:space="preserve">
+  <data name="BEY0003UseTabsCorrectlyDiagnosticDescription" xml:space="preserve">
     <value>The code contains a tab or space character which is not consistent with the current project settings.</value>
   </data>
-  <data name="BeyondUseTabsCorrectlyDiagnosticMessageFormat" xml:space="preserve">
+  <data name="BEY0003UseTabsCorrectlyDiagnosticMessageFormat" xml:space="preserve">
     <value>Tabs and spaces should be used correctly</value>
   </data>
-  <data name="BeyondUseTabsCorrectlyDiagnosticTitle" xml:space="preserve">
+  <data name="BEY0003UseTabsCorrectlyDiagnosticTitle" xml:space="preserve">
     <value>Use tabs correctly</value>
   </data>
-  <data name="BeyondElementMustNamedUpperPascalCaseCodeFixTitle" xml:space="preserve">
-    <value />
+  <data name="BEY0005ElementMustNamedUpperPascalCaseDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# element does not use UpperPascalCase style.</value>
   </data>
-  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticDescription" xml:space="preserve">
-    <value>The name of a C# element does not use UpperPascalCase.</value>
+  <data name="BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat" xml:space="preserve">
+    <value>Element should be named with UpperPascalCase style</value>
   </data>
-  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat" xml:space="preserve">
-    <value>Element should be named with UpperPascalCase</value>
+  <data name="BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle" xml:space="preserve">
+    <value>Element '{0}' should be named with UpperPascalCase style</value>
   </data>
-  <data name="BeyondElementMustNamedUpperPascalCaseDiagnosticTitle" xml:space="preserve">
-    <value>Element '{0}' should be named with UpperPascalCase</value>
+  <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# element does not use lowerCamelCase style.</value>
   </data>
-  <data name="BeyondElementMustNamedLowerCamelCaseCodeFixTitle" xml:space="preserve">
-    <value />
+  <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticMessageFormat" xml:space="preserve">
+    <value>Element should be named with lowerCamelCase style</value>
   </data>
-  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticDescription" xml:space="preserve">
-    <value>The name of a C# element does not use lowerCamelCase.</value>
+  <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticTitle" xml:space="preserve">
+    <value>Element '{0}' should be named with lowerCamelCase style</value>
   </data>
-  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat" xml:space="preserve">
-    <value>Element should be named with lowerCamelCase</value>
+  <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# interface does not begin with the capital letter I.</value>
   </data>
-  <data name="BeyondElementMustNamedLowerCamelCaseDiagnosticTitle" xml:space="preserve">
-    <value>Element '{0}' should be named with lowerCamelCase</value>
+  <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat" xml:space="preserve">
+    <value>Interface names should begin with I</value>
   </data>
-  <data name="BeyondInterfaceNamesMustBeginWithICodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
+  <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle" xml:space="preserve">
+    <value>Interface '{0}' names should begin with I</value>
   </data>
-  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticDescription" xml:space="preserve">
-    <value>TODO: Add description.</value>
+  <data name="BEY0006ElementMustNamedAllCapsDiagnosticDescription" xml:space="preserve">
+    <value>The name of a C# element does not use ALL_CAPS style.</value>
   </data>
-  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat" xml:space="preserve">
-    <value>TODO: Add Message format</value>
+  <data name="BEY0006ElementMustNamedAllCapsDiagnosticMessageFormat" xml:space="preserve">
+    <value>Element should be named with ALL_CAPS style</value>
   </data>
-  <data name="BeyondInterfaceNamesMustBeginWithIDiagnosticTitle" xml:space="preserve">
-    <value>TODO: Add title</value>
+  <data name="BEY0006ElementMustNamedAllCapsDiagnosticTitle" xml:space="preserve">
+    <value>Element '{0}' should be named with ALL_CAPS style</value>
   </data>
-  <data name="BeyondElementMustNamedAllCapsCodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
+  <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
+    <value>The name of a private method does not begin with the '_' or use _UpperPascalCase style.</value>
   </data>
-  <data name="BeyondElementMustNamedAllCapsDiagnosticDescription" xml:space="preserve">
-    <value>TODO: Add description.</value>
+  <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
+    <value>Private method should be named with _UpperPascalCase with prefix '_'</value>
   </data>
-  <data name="BeyondElementMustNamedAllCapsDiagnosticMessageFormat" xml:space="preserve">
-    <value>TODO: Add Message format</value>
+  <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
+    <value>Private method '{0}' should be named with _UpperPascalCase with prefix '_'</value>
   </data>
-  <data name="BeyondElementMustNamedAllCapsDiagnosticTitle" xml:space="preserve">
-    <value>TODO: Add title</value>
+  <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticDescription" xml:space="preserve">
+    <value>The name of a non-public field does not begin with 'm_'.</value>
   </data>
-  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
+  <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticMessageFormat" xml:space="preserve">
+    <value>Non-public field names should begin with 'm_'</value>
   </data>
-  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
-    <value>The name of a private method does not use _UpperPascalCase.</value>
+  <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle" xml:space="preserve">
+    <value>Non-public field '{0}' names should begin with 'm_'</value>
   </data>
-  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
-    <value>Private method {0} should be named with _UpperPascalCase</value>
+  <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription" xml:space="preserve">
+    <value>The name of a static field does not begin with 's_'.</value>
   </data>
-  <data name="BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
-    <value>Private method {0} should be named with _UpperPascalCase</value>
+  <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat" xml:space="preserve">
+    <value>Static field name should begin with 's_'</value>
   </data>
-  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
+  <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle" xml:space="preserve">
+    <value>Static field '{0}' names should begin with 's_'</value>
   </data>
-  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription" xml:space="preserve">
-    <value>TODO: Add description.</value>
+  <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
+    <value>The name of a non-public unity [SerializeField] should begin with '_'.</value>
   </data>
-  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat" xml:space="preserve">
-    <value>TODO: Add Message format</value>
+  <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
+    <value>Non-public unity [SerializeField] should begin with '_'</value>
   </data>
-  <data name="BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle" xml:space="preserve">
-    <value>TODO: Add title</value>
-  </data>
-  <data name="BeyondStaticFieldNamesMustBeginWithSCodeFixTitle" xml:space="preserve">
-    <value>TODO: Add code fix title</value>
-  </data>
-  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription" xml:space="preserve">
-    <value>TODO: Add description.</value>
-  </data>
-  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat" xml:space="preserve">
-    <value>TODO: Add Message format</value>
-  </data>
-  <data name="BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle" xml:space="preserve">
-    <value>TODO: Add title</value>
+  <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
+    <value>Non-public unity [SerializeField] '{0}' should begin with '_'</value>
   </data>
 </root>

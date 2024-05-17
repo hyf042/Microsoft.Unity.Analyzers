@@ -59,19 +59,19 @@ namespace Microsoft.Unity.Analyzers;
 /// </code>
 /// </remarks>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer : DiagnosticAnalyzer
+public class BEY0002BracesForMultiLineStatementsMustNotShareLineAnalyzer : DiagnosticAnalyzer
 {
 	private const string RuleId = "BEY0002";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle,
-		messageFormat: Strings.BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat,
+		title: Strings.BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticTitle,
+		messageFormat: Strings.BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription);
+		description: Strings.BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> NamespaceDeclarationAction = HandleNamespaceDeclaration;
 	private static readonly Action<SyntaxNodeAnalysisContext> BaseTypeDeclarationAction = HandleBaseTypeDeclaration;
@@ -317,9 +317,9 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer : Diagno
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFixProvider
+public class BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0002BracesForMultiLineStatementsMustNotShareLineAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -329,9 +329,9 @@ public class BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix : CodeFix
 		{
 			context.RegisterCodeFix(
 				CodeAction.Create(
-					Strings.BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle,
+					Strings.BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFixTitle,
 					cancellationToken => GetTransformedDocumentAsync(context.Document, diagnostic, cancellationToken),
-					nameof(BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix)),
+					nameof(BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFix)),
 				diagnostic);
 		}
 

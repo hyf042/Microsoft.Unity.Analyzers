@@ -695,11 +695,21 @@ namespace UnityEditor.Callbacks
 	class DidReloadScripts : Attribute { }
 }
 
+namespace UnityEditor.VersionControl
+{
+	enum FileMode;
+}
+
 namespace UnityEditor
 {
 	using UnityEngine;
 	using UnityEngine.UIElements;
 	using AssetImporters;
+
+	enum AssetDeleteResult;
+	enum AssetMoveResult;
+	enum RemoveAssetOptions;
+	enum StatusQueryOptions;
 
 	class AssetDatabase {}
 
@@ -749,6 +759,18 @@ namespace UnityEditor
 
 	class EditorCurveBinding
 	{
+	}
+
+	class AssetModificationProcessor
+	{
+		static bool CanOpenForEdit(string[] paths, List<string> outNotEditablePaths, StatusQueryOptions statusQueryOptions) { return false; }
+		static void FileModeChanged(string[] paths, VersionControl.FileMode mode) { }
+		static bool IsOpenForEdit(string[] paths, List<string> outNotEditablePaths, StatusQueryOptions statusQueryOptions) { return false; }
+		static bool MakeEditable(string[] paths, string prompt, List<string> outNotEditablePaths) { return false; }
+		static void OnWillCreateAsset(string assetName) { }
+		static AssetDeleteResult OnWillDeleteAsset(string assetName, RemoveAssetOptions options) { return default; }
+		static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath) { return default; }
+		static string[] OnWillSaveAssets(string[] paths) { return null; }
 	}
 
 	class AssetPostprocessor

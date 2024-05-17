@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System.Threading.Tasks;
@@ -10,9 +5,23 @@ using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondElementMustNamedUpperPascalCaseTests : BaseCodeFixVerifierTest<BeyondElementMustNamedUpperPascalCaseAnalyzer, BeyondElementMustNamedUpperPascalCaseCodeFix>
+/// <summary>
+/// Unit tests for <see cref="BEY0005ElementMustNamedUpperPascalCaseAnalyzer"/>.
+/// </summary>
+public class BEY0005ElementMustNamedUpperPascalCaseTests : BaseCodeFixVerifierTest<BEY0005ElementMustNamedUpperPascalCaseAnalyzer, BEY0005ElementMustNamedUpperPascalCaseCodeFix>
 {
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
+	protected override string[] DisabledDiagnostics
+	{
+		get =>
+		[ 
+			// Suppress CS0067: warning CS0067: The event 'TypeName.bar' is never used
+			"CS0067",
+			// Suppress CS0169: warning CS0169: The field 'Foo.Bar' is never used
+			"CS0169",
+			// Suppress CS0649: warning CS0649: Field 'Foo.Bar' is never assigned to, and will always have its default value null
+			"CS0649",
+		];
+	}
 
 	[Fact]
 	public async Task TestUpperCaseNamespaceAsync()
@@ -38,7 +47,7 @@ public class BeyondElementMustNamedUpperPascalCaseTests : BaseCodeFixVerifierTes
 
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 11);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 11);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -57,9 +66,9 @@ public class BeyondElementMustNamedUpperPascalCaseTests : BaseCodeFixVerifierTes
 
 		DiagnosticResult[] expected = new[]
 		{
-			Diagnostic().WithArguments("test").WithLocation(1, 11),
-			Diagnostic().WithArguments("foo").WithLocation(1, 16),
-			Diagnostic().WithArguments("bar").WithLocation(1, 20),
+			ExpectDiagnostic().WithArguments("test").WithLocation(1, 11),
+			ExpectDiagnostic().WithArguments("foo").WithLocation(1, 16),
+			ExpectDiagnostic().WithArguments("bar").WithLocation(1, 20),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
@@ -88,7 +97,7 @@ public class BeyondElementMustNamedUpperPascalCaseTests : BaseCodeFixVerifierTes
 
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 14);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 14);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -106,7 +115,7 @@ public class Test { }";
 
 public class Test { }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 14);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 14);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -129,7 +138,7 @@ public class Test { }";
 
 }";
 
-		// Reported as SA1302
+		// Reported as BEY0007
 		await VerifyCSharpDiagnosticAsync(testCode);
 	}
 
@@ -156,7 +165,7 @@ public class Test { }";
 
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 15);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 15);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -174,7 +183,7 @@ public class Test { }";
 
 public class Test { }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 15);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 15);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -201,7 +210,7 @@ public class Test { }";
 
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 13);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -219,7 +228,7 @@ public class Test { }";
 
 public class Test { }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 13);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -235,7 +244,7 @@ public class Test { }";
     Test
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(1, 13);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(1, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -262,7 +271,7 @@ public class Test { }";
     Member
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("member").WithLocation(3, 5);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("member").WithLocation(3, 5);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -280,7 +289,7 @@ public class Test { }";
     Member
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("member").WithLocation(3, 5);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("member").WithLocation(3, 5);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -300,7 +309,7 @@ public class Test { }";
     Member1,
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("member").WithLocation(3, 5);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("member").WithLocation(3, 5);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -318,7 +327,7 @@ public class Test { }";
     Member1
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("member1").WithLocation(3, 5);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("member1").WithLocation(3, 5);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -345,7 +354,7 @@ public delegate void test();
 public delegate void Test();
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(3, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -365,7 +374,7 @@ public delegate void Test2();
 public int Test => 0;
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(3, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -393,90 +402,6 @@ public int Test => 0;
 	}
 
 	[Fact]
-	public async Task TestLowerCaseEventAsync()
-	{
-		var testCode = @"public class TestClass
-{
-    public delegate void Test();
-    Test _testEvent;
-    public event Test testEvent
-    {
-        add
-        {
-            _testEvent += value;
-        }
-        remove
-        {
-            _testEvent -= value;
-        }
-    }
-}";
-		var fixedCode = @"public class TestClass
-{
-    public delegate void Test();
-    Test _testEvent;
-    public event Test TestEvent
-    {
-        add
-        {
-            _testEvent += value;
-        }
-        remove
-        {
-            _testEvent -= value;
-        }
-    }
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("testEvent").WithLocation(5, 23);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
-	}
-
-	[Fact]
-	public async Task TestLowerCaseEventWithConflictAsync()
-	{
-		var testCode = @"public class TestClass
-{
-    public delegate void Test();
-    Test _testEvent;
-    public event Test testEvent
-    {
-        add
-        {
-            _testEvent += value;
-        }
-        remove
-        {
-            _testEvent -= value;
-        }
-    }
-
-    public int TestEvent => 0;
-}";
-		var fixedCode = @"public class TestClass
-{
-    public delegate void Test();
-    Test _testEvent;
-    public event Test TestEvent1
-    {
-        add
-        {
-            _testEvent += value;
-        }
-        remove
-        {
-            _testEvent -= value;
-        }
-    }
-
-    public int TestEvent => 0;
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("testEvent").WithLocation(5, 23);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
-	}
-
-	[Fact]
 	public async Task TestUpperCaseEventFieldAsync()
 	{
 		var testCode = @"public class TestClass
@@ -489,49 +414,14 @@ public int Test => 0;
 	}
 
 	[Fact]
-	public async Task TestLowerCaseEventFieldAsync()
-	{
-		var testCode = @"public class TestClass
-{
-    public delegate void Test();
-    public event Test testEvent;
-}";
-		var fixedCode = @"public class TestClass
-{
-    public delegate void Test();
-    public event Test TestEvent;
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("testEvent").WithLocation(4, 23);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
-	}
-
-	[Fact]
-	public async Task TestLowerCaseEventFieldWithConflictAsync()
-	{
-		var testCode = @"public class TestClass
-{
-    public delegate void Test();
-    public event Test testEvent;
-    public event Test TestEvent;
-}";
-		var fixedCode = @"public class TestClass
-{
-    public delegate void Test();
-    public event Test TestEvent1;
-    public event Test TestEvent;
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("testEvent").WithLocation(4, 23);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
-	}
-
-	[Fact]
 	public async Task TestUpperCaseMethodAsync()
 	{
 		var testCode = @"public class TestClass
 {
 public void Test()
+{
+}
+private void test() // private method is handled by BEY0008
 {
 }
 }";
@@ -555,7 +445,7 @@ public void Test()
 }
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 13);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(3, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -580,7 +470,7 @@ public void Test1()
 public int Test(int value) => value;
 }";
 
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 13);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("test").WithLocation(3, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -593,40 +483,6 @@ public string Test { get; set; }
 }";
 
 		await VerifyCSharpDiagnosticAsync(testCode);
-	}
-
-	[Fact]
-	public async Task TestLowerCasePropertyAsync()
-	{
-		var testCode = @"public class TestClass
-{
-public string test { get; set; }
-}";
-		var fixedCode = @"public class TestClass
-{
-public string Test { get; set; }
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 15);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
-	}
-
-	[Fact]
-	public async Task TestLowerCasePropertyWithConflictAsync()
-	{
-		var testCode = @"public class TestClass
-{
-public string test { get; set; }
-public string Test => string.Empty;
-}";
-		var fixedCode = @"public class TestClass
-{
-public string Test1 { get; set; }
-public string Test => string.Empty;
-}";
-
-		DiagnosticResult expected = Diagnostic().WithArguments("test").WithLocation(3, 15);
-		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
 	[Fact]
@@ -703,7 +559,7 @@ readonly string test;
 public string test;
 }";
 
-		// Handled by SA1307
+		// Handled by BEY0004
 		await VerifyCSharpDiagnosticAsync(testCode);
 	}
 
@@ -715,7 +571,7 @@ public string test;
 internal string test;
 }";
 
-		// Handled by SA1307
+		// Handled by BEY0004
 		await VerifyCSharpDiagnosticAsync(testCode);
 	}
 
@@ -727,7 +583,7 @@ internal string test;
 const string test = ""value"";
 }";
 
-		// Reported as SA1303
+		// Reported as BEY0006
 		await VerifyCSharpDiagnosticAsync(testCode);
 	}
 
@@ -750,7 +606,7 @@ public string test { get; set; }
 protected readonly string test;
 }";
 
-		// Handled by SA1304
+		// Handled by BEY0010
 		await VerifyCSharpDiagnosticAsync(testCode);
 	}
 
@@ -787,7 +643,7 @@ public abstract class BaseClass
 }";
 		var fixedCode = @"public class TestClass : BaseClass
 {
-    public override int Bar
+    public override int bar
     {
         get
         {
@@ -795,7 +651,7 @@ public abstract class BaseClass
         }
     }
 
-    public override event System.EventHandler FooBar
+    public override event System.EventHandler fooBar
     {
         add { }
         remove { }
@@ -810,16 +666,11 @@ public abstract class BaseClass
 public abstract class BaseClass
 {
     public abstract void Foo();
-    public abstract int Bar { get; }
-    public abstract event System.EventHandler FooBar;
+    public abstract int bar { get; }
+    public abstract event System.EventHandler fooBar;
 }";
 
-		var expected = new[]
-		{
-				Diagnostic().WithLocation(25, 26).WithArguments("foo"),
-				Diagnostic().WithLocation(26, 25).WithArguments("bar"),
-				Diagnostic().WithLocation(27, 47).WithArguments("fooBar"),
-			};
+		var expected = ExpectDiagnostic().WithLocation(25, 26).WithArguments("foo");
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
@@ -829,72 +680,28 @@ public abstract class BaseClass
 	{
 		var testCode = @"public class TestClass : IInterface
 {
-    public int bar
-    {
-        get
-        {
-            return 0;
-        }
-    }
-
-    public event System.EventHandler fooBar
-    {
-        add { }
-        remove { }
-    }
-
     public void foo()
     {
     }
-
-    public string iInterface { get; }
 }
 
 public interface IInterface
 {
     void foo();
-    int bar { get; }
-    event System.EventHandler fooBar;
-    string iInterface { get; }
 }";
 		var fixedCode = @"public class TestClass : IInterface
 {
-    public int Bar
-    {
-        get
-        {
-            return 0;
-        }
-    }
-
-    public event System.EventHandler FooBar
-    {
-        add { }
-        remove { }
-    }
-
     public void Foo()
     {
     }
-
-    public string IInterface { get; }
 }
 
 public interface IInterface
 {
     void Foo();
-    int Bar { get; }
-    event System.EventHandler FooBar;
-    string IInterface { get; }
 }";
 
-		var expected = new[]
-		{
-				Diagnostic().WithLocation(26, 10).WithArguments("foo"),
-				Diagnostic().WithLocation(27, 9).WithArguments("bar"),
-				Diagnostic().WithLocation(28, 31).WithArguments("fooBar"),
-				Diagnostic().WithLocation(29, 12).WithArguments("iInterface"),
-			};
+		var expected = ExpectDiagnostic().WithLocation(10, 10).WithArguments("foo");
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
@@ -922,8 +729,8 @@ public interface IInterface
 
 		DiagnosticResult[] expected =
 		{
-				Diagnostic().WithLocation(5, 5).WithArguments("_tick"),
-				Diagnostic().WithLocation(6, 5).WithArguments("_Tock"),
+				ExpectDiagnostic().WithLocation(5, 5).WithArguments("_tick"),
+				ExpectDiagnostic().WithLocation(6, 5).WithArguments("_Tock"),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
@@ -937,7 +744,7 @@ public interface IInterface
 		var testCode = $@"
 public class TestClass
 {{
-    public void [|{name}|]()
+    public void {name}()
     {{
     }}
 }}";
@@ -945,7 +752,7 @@ public class TestClass
 		var fixedCode = $@"
 public class TestClass
 {{
-    public void [|{name}|]()
+    public void {name}()
     {{
     }}
 }}";

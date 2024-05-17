@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System;
@@ -21,26 +16,32 @@ using Microsoft.Unity.Analyzers.StyleCop;
 namespace Microsoft.Unity.Analyzers;
 
 /// <summary>
-/// Implements a code fix for <see cref="SA1302InterfaceNamesMustBeginWithI"/>.
+/// The name of a C# interface does not begin with the capital letter I.
 /// </summary>
 /// <remarks>
-/// <para>To fix a violation of this rule, add the capital letter I to the front of the interface name, or place the
-/// item within a <c>NativeMethods</c> class if appropriate.</para>
+/// <para>A violation of this rule occurs when the name of an interface does not begin with the capital letter I.
+/// Interface names should always begin with I. For example, <c>ICustomer</c>.</para>
+///
+/// <para>If the field or variable name is intended to match the name of an item associated with Win32 or COM, and
+/// thus cannot begin with the letter I, place the field or variable within a special <c>NativeMethods</c> class. A
+/// <c>NativeMethods</c> class is any class which contains a name ending in <c>NativeMethods</c>, and is intended as
+/// a placeholder for Win32 or COM wrappers. StyleCop will ignore this violation if the item is placed within a
+/// <c>NativeMethods</c> class.</para>
 /// </remarks>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondInterfaceNamesMustBeginWithIAnalyzer : DiagnosticAnalyzer
+public class BEY0007InterfaceNamesMustBeginWithIAnalyzer : DiagnosticAnalyzer
 {
-	private const string RuleId = "BEY0009";
+	private const string RuleId = "BEY0007";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondInterfaceNamesMustBeginWithIDiagnosticTitle,
-		messageFormat: Strings.BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat,
+		title: Strings.BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle,
+		messageFormat: Strings.BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondInterfaceNamesMustBeginWithIDiagnosticDescription);
+		description: Strings.BEY0007InterfaceNamesMustBeginWithIDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> InterfaceDeclarationAction = HandleInterfaceDeclaration;
 
@@ -76,9 +77,9 @@ public class BeyondInterfaceNamesMustBeginWithIAnalyzer : DiagnosticAnalyzer
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondInterfaceNamesMustBeginWithICodeFix : CodeFixProvider
+public class BEY0007InterfaceNamesMustBeginWithICodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondInterfaceNamesMustBeginWithIAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0007InterfaceNamesMustBeginWithIAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -86,18 +87,13 @@ public class BeyondInterfaceNamesMustBeginWithICodeFix : CodeFixProvider
 	{
 		foreach (var diagnostic in context.Diagnostics)
 		{
-			context.RegisterCodeFix(
-				CodeAction.Create(
-					Strings.BeyondInterfaceNamesMustBeginWithICodeFixTitle,
-					cancellationToken => CreateChangedSolutionAsync(context.Document, diagnostic, cancellationToken),
-					nameof(BeyondInterfaceNamesMustBeginWithIAnalyzer)),
-				diagnostic);
+			await CreateChangedSolutionAsync(context, context.Document, diagnostic, context.CancellationToken);
 		}
 
 		await Task.CompletedTask;
 	}
 
-	private static async Task<Solution> CreateChangedSolutionAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
+	private static async Task CreateChangedSolutionAsync(CodeFixContext context, Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
 	{
 		var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 		var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
@@ -113,6 +109,11 @@ public class BeyondInterfaceNamesMustBeginWithICodeFix : CodeFixProvider
 			newName = baseName + index;
 		}
 
-		return await RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken).ConfigureAwait(false);
+		context.RegisterCodeFix(
+			CodeAction.Create(
+				string.Format(Strings.RenameToCodeFix, newName),
+				cancellationToken => RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken),
+				nameof(BEY0007InterfaceNamesMustBeginWithIAnalyzer)),
+			diagnostic);
 	}
 }

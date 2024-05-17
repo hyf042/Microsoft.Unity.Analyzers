@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System;
@@ -25,7 +20,7 @@ namespace Microsoft.Unity.Analyzers;
 /// The code contains a tab or space character which is not consistent with the current project settings.
 /// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondUseTabsCorrectlyAnalyzer : DiagnosticAnalyzer
+public class BEY0003UseTabsCorrectlyAnalyzer : DiagnosticAnalyzer
 {
 	private const string RuleId = "BEY0003";
 
@@ -35,13 +30,13 @@ public class BeyondUseTabsCorrectlyAnalyzer : DiagnosticAnalyzer
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondUseTabsCorrectlyDiagnosticTitle,
-		messageFormat: Strings.BeyondUseTabsCorrectlyDiagnosticMessageFormat,
+		title: Strings.BEY0003UseTabsCorrectlyDiagnosticTitle,
+		messageFormat: Strings.BEY0003UseTabsCorrectlyDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondUseTabsCorrectlyDiagnosticDescription);
+		description: Strings.BEY0003UseTabsCorrectlyDiagnosticDescription);
 
 	private static readonly Action<SyntaxTreeAnalysisContext> SyntaxTreeAction = HandleSyntaxTree;
 
@@ -265,9 +260,9 @@ public class BeyondUseTabsCorrectlyAnalyzer : DiagnosticAnalyzer
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondUseTabsCorrectlyCodeFix : CodeFixProvider
+public class BEY0003UseTabsCorrectlyCodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondUseTabsCorrectlyAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0003UseTabsCorrectlyAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -277,9 +272,9 @@ public class BeyondUseTabsCorrectlyCodeFix : CodeFixProvider
 		{
 			context.RegisterCodeFix(
 				CodeAction.Create(
-					Strings.BeyondUseTabsCorrectlyCodeFixTitle,
+					Strings.BEY0003UseTabsCorrectlyCodeFixTitle,
 					cancellationToken => GetTransformedDocumentAsync(context.Document, diagnostic, cancellationToken),
-					nameof(BeyondUseTabsCorrectlyCodeFix)),
+					nameof(BEY0003UseTabsCorrectlyCodeFix)),
 				diagnostic);
 		}
 
@@ -301,9 +296,9 @@ public class BeyondUseTabsCorrectlyCodeFix : CodeFixProvider
 
 		bool useTabs = false;
 		string behavior;
-		if (diagnostic.Properties.TryGetValue(BeyondUseTabsCorrectlyAnalyzer.BehaviorKey, out behavior))
+		if (diagnostic.Properties.TryGetValue(BEY0003UseTabsCorrectlyAnalyzer.BehaviorKey, out behavior))
 		{
-			useTabs = behavior == BeyondUseTabsCorrectlyAnalyzer.ConvertToTabsBehavior;
+			useTabs = behavior == BEY0003UseTabsCorrectlyAnalyzer.ConvertToTabsBehavior;
 		}
 
 		string text = sourceText.ToString(TextSpan.FromBounds(startLine.Start, span.End));

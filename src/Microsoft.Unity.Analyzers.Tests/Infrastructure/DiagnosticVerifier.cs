@@ -180,7 +180,7 @@ public abstract class DiagnosticVerifier
 				}
 				else
 				{
-					Assert.True(location.IsInSource, $"Test base does not currently handle diagnostics in metadata locations. Diagnostic in metadata: {diagnostics[i]}\r\n");
+					Assert.True(location.IsInSource, $"Test base does not currently handle diagnostics in metadata locations. ExpectDiagnostic in metadata: {diagnostics[i]}\r\n");
 
 					var syntaxTree = diagnostics[i].Location.SourceTree;
 					Assert.NotNull(syntaxTree);

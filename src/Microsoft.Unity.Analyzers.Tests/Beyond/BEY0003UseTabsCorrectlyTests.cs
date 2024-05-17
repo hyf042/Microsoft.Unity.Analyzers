@@ -1,17 +1,13 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondUseTabsCorrectlyTests : BaseCodeFixVerifierTest<BeyondUseTabsCorrectlyAnalyzer, BeyondUseTabsCorrectlyCodeFix>
+/// <summary>
+/// Unit tests for <see cref="BEY0003UseTabsCorrectlyAnalyzer"/>.
+/// </summary>
+public class BEY0003UseTabsCorrectlyTests : BaseCodeFixVerifierTest<BEY0003UseTabsCorrectlyAnalyzer, BEY0003UseTabsCorrectlyCodeFix>
 {
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
-
 	/// <summary>
 	/// Verifies that tabs used inside string and char literals are not producing diagnostics.
 	/// </summary>
@@ -77,14 +73,14 @@ public  class   Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(1, 6),
-			Diagnostic().WithLocation(3, 7),
-			Diagnostic().WithLocation(3, 13),
-			Diagnostic().WithLocation(5, 1),
-			Diagnostic().WithLocation(6, 1),
-			Diagnostic().WithLocation(7, 1),
-			Diagnostic().WithLocation(8, 1),
-			Diagnostic().WithLocation(9, 1),
+			ExpectDiagnostic().WithLocation(1, 6),
+			ExpectDiagnostic().WithLocation(3, 7),
+			ExpectDiagnostic().WithLocation(3, 13),
+			ExpectDiagnostic().WithLocation(5, 1),
+			ExpectDiagnostic().WithLocation(6, 1),
+			ExpectDiagnostic().WithLocation(7, 1),
+			ExpectDiagnostic().WithLocation(8, 1),
+			ExpectDiagnostic().WithLocation(9, 1),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
@@ -115,20 +111,20 @@ public  class   Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(1, 1),
-			Diagnostic().WithLocation(1, 5),
-			Diagnostic().WithLocation(2, 1),
-			Diagnostic().WithLocation(2, 9),
-			Diagnostic().WithLocation(3, 1),
-			Diagnostic().WithLocation(3, 5),
-			Diagnostic().WithLocation(4, 1),
-			Diagnostic().WithLocation(5, 1),
-			Diagnostic().WithLocation(6, 1),
-			Diagnostic().WithLocation(6, 19),
-			Diagnostic().WithLocation(7, 1),
-			Diagnostic().WithLocation(7, 6),
-			Diagnostic().WithLocation(7, 39),
-			Diagnostic().WithLocation(8, 1),
+			ExpectDiagnostic().WithLocation(1, 1),
+			ExpectDiagnostic().WithLocation(1, 5),
+			ExpectDiagnostic().WithLocation(2, 1),
+			ExpectDiagnostic().WithLocation(2, 9),
+			ExpectDiagnostic().WithLocation(3, 1),
+			ExpectDiagnostic().WithLocation(3, 5),
+			ExpectDiagnostic().WithLocation(4, 1),
+			ExpectDiagnostic().WithLocation(5, 1),
+			ExpectDiagnostic().WithLocation(6, 1),
+			ExpectDiagnostic().WithLocation(6, 19),
+			ExpectDiagnostic().WithLocation(7, 1),
+			ExpectDiagnostic().WithLocation(7, 6),
+			ExpectDiagnostic().WithLocation(7, 39),
+			ExpectDiagnostic().WithLocation(8, 1),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
@@ -161,16 +157,16 @@ public  class   Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(1, 1),
-			Diagnostic().WithLocation(2, 1),
-			Diagnostic().WithLocation(3, 1),
-			Diagnostic().WithLocation(4, 1),
-			Diagnostic().WithLocation(5, 1),
-			Diagnostic().WithLocation(5, 7),
-			Diagnostic().WithLocation(5, 15),
-			Diagnostic().WithLocation(7, 1),
-			Diagnostic().WithLocation(8, 1),
-			Diagnostic().WithLocation(9, 1),
+			ExpectDiagnostic().WithLocation(1, 1),
+			ExpectDiagnostic().WithLocation(2, 1),
+			ExpectDiagnostic().WithLocation(3, 1),
+			ExpectDiagnostic().WithLocation(4, 1),
+			ExpectDiagnostic().WithLocation(5, 1),
+			ExpectDiagnostic().WithLocation(5, 7),
+			ExpectDiagnostic().WithLocation(5, 15),
+			ExpectDiagnostic().WithLocation(7, 1),
+			ExpectDiagnostic().WithLocation(8, 1),
+			ExpectDiagnostic().WithLocation(9, 1),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
@@ -205,17 +201,17 @@ public  class   Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(1, 1),
-			Diagnostic().WithLocation(2, 1),
-			Diagnostic().WithLocation(3, 1),
-			Diagnostic().WithLocation(4, 1),
-			Diagnostic().WithLocation(5, 1),
-			Diagnostic().WithLocation(6, 1),
-			Diagnostic().WithLocation(6, 11),
-			Diagnostic().WithLocation(7, 1),
-			Diagnostic().WithLocation(8, 1),
-			Diagnostic().WithLocation(9, 1),
-			Diagnostic().WithLocation(10, 1),
+			ExpectDiagnostic().WithLocation(1, 1),
+			ExpectDiagnostic().WithLocation(2, 1),
+			ExpectDiagnostic().WithLocation(3, 1),
+			ExpectDiagnostic().WithLocation(4, 1),
+			ExpectDiagnostic().WithLocation(5, 1),
+			ExpectDiagnostic().WithLocation(6, 1),
+			ExpectDiagnostic().WithLocation(6, 11),
+			ExpectDiagnostic().WithLocation(7, 1),
+			ExpectDiagnostic().WithLocation(8, 1),
+			ExpectDiagnostic().WithLocation(9, 1),
+			ExpectDiagnostic().WithLocation(10, 1),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);

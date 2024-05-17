@@ -135,6 +135,11 @@ internal static class NamedTypeHelpers
 		return false;
 	}
 
+	internal static bool IsContainedInAttributeDerivedClass(ISymbol memberSymbol)
+	{
+		return memberSymbol?.ContainingType?.Extends(typeof(Attribute)) ?? false;
+	}
+
 	/// <summary>
 	/// Returns whether or not a member is implementing an interface member.
 	/// </summary>

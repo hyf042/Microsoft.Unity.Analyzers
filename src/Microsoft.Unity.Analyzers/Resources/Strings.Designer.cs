@@ -88,362 +88,328 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align braces.
-        /// </summary>
-        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The opening or closing brace within a C# statement, element, or expression is not placed on its own line..
-        /// </summary>
-        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
-        /// </summary>
-        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
-        /// </summary>
-        internal static string BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondBracesForMultiLineStatementsMustNotShareLineDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Wrap with braces.
         /// </summary>
-        internal static string BeyondBracesMustNotBeOmittedCodeFixTitle {
+        internal static string BEY0001BracesMustNotBeOmittedCodeFixTitle {
             get {
-                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedCodeFixTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0001BracesMustNotBeOmittedCodeFixTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to The opening and closing braces for a C# statement have been omitted..
         /// </summary>
-        internal static string BeyondBracesMustNotBeOmittedDiagnosticDescription {
+        internal static string BEY0001BracesMustNotBeOmittedDiagnosticDescription {
             get {
-                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticDescription", resourceCulture);
+                return ResourceManager.GetString("BEY0001BracesMustNotBeOmittedDiagnosticDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Braces should not be omitted.
         /// </summary>
-        internal static string BeyondBracesMustNotBeOmittedDiagnosticMessageFormat {
+        internal static string BEY0001BracesMustNotBeOmittedDiagnosticMessageFormat {
             get {
-                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticMessageFormat", resourceCulture);
+                return ResourceManager.GetString("BEY0001BracesMustNotBeOmittedDiagnosticMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Braces should not be omitted.
         /// </summary>
-        internal static string BeyondBracesMustNotBeOmittedDiagnosticTitle {
+        internal static string BEY0001BracesMustNotBeOmittedDiagnosticTitle {
             get {
-                return ResourceManager.GetString("BeyondBracesMustNotBeOmittedDiagnosticTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0001BracesMustNotBeOmittedDiagnosticTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TODO: Add code fix title.
+        ///   Looks up a localized string similar to Align braces.
         /// </summary>
-        internal static string BeyondElementMustNamedAllCapsCodeFixTitle {
+        internal static string BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFixTitle {
             get {
-                return ResourceManager.GetString("BeyondElementMustNamedAllCapsCodeFixTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFixTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TODO: Add description..
+        ///   Looks up a localized string similar to The opening or closing brace within a C# statement, element, or expression is not placed on its own line..
         /// </summary>
-        internal static string BeyondElementMustNamedAllCapsDiagnosticDescription {
+        internal static string BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticDescription {
             get {
-                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticDescription", resourceCulture);
+                return ResourceManager.GetString("BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TODO: Add Message format.
+        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
         /// </summary>
-        internal static string BeyondElementMustNamedAllCapsDiagnosticMessageFormat {
+        internal static string BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat {
             get {
-                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticMessageFormat", resourceCulture);
+                return ResourceManager.GetString("BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TODO: Add title.
+        ///   Looks up a localized string similar to Braces for multi-line statements should not share line.
         /// </summary>
-        internal static string BeyondElementMustNamedAllCapsDiagnosticTitle {
+        internal static string BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticTitle {
             get {
-                return ResourceManager.GetString("BeyondElementMustNamedAllCapsDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string BeyondElementMustNamedLowerCamelCaseCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The name of a C# element does not use lowerCamelCase..
-        /// </summary>
-        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Element should be named with lowerCamelCase.
-        /// </summary>
-        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with lowerCamelCase.
-        /// </summary>
-        internal static string BeyondElementMustNamedLowerCamelCaseDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedLowerCamelCaseDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string BeyondElementMustNamedUpperPascalCaseCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The name of a C# element does not use UpperPascalCase..
-        /// </summary>
-        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Element should be named with UpperPascalCase.
-        /// </summary>
-        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with UpperPascalCase.
-        /// </summary>
-        internal static string BeyondElementMustNamedUpperPascalCaseDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondElementMustNamedUpperPascalCaseDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add code fix title.
-        /// </summary>
-        internal static string BeyondInterfaceNamesMustBeginWithICodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithICodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add description..
-        /// </summary>
-        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add Message format.
-        /// </summary>
-        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add title.
-        /// </summary>
-        internal static string BeyondInterfaceNamesMustBeginWithIDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondInterfaceNamesMustBeginWithIDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add code fix title.
-        /// </summary>
-        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add description..
-        /// </summary>
-        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add Message format.
-        /// </summary>
-        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add title.
-        /// </summary>
-        internal static string BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondNonPublicFieldNamesMustBeginWithPrefixDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add code fix title.
-        /// </summary>
-        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The name of a private method does not use _UpperPascalCase..
-        /// </summary>
-        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Private method {0} should be named with _UpperPascalCase.
-        /// </summary>
-        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Private method {0} should be named with _UpperPascalCase.
-        /// </summary>
-        internal static string BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondPrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add code fix title.
-        /// </summary>
-        internal static string BeyondStaticFieldNamesMustBeginWithSCodeFixTitle {
-            get {
-                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSCodeFixTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add description..
-        /// </summary>
-        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription {
-            get {
-                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add Message format.
-        /// </summary>
-        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat {
-            get {
-                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TODO: Add title.
-        /// </summary>
-        internal static string BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle {
-            get {
-                return ResourceManager.GetString("BeyondStaticFieldNamesMustBeginWithSDiagnosticTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0002BracesForMultiLineStatementsMustNotShareLineDiagnosticTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Fix tabs.
         /// </summary>
-        internal static string BeyondUseTabsCorrectlyCodeFixTitle {
+        internal static string BEY0003UseTabsCorrectlyCodeFixTitle {
             get {
-                return ResourceManager.GetString("BeyondUseTabsCorrectlyCodeFixTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0003UseTabsCorrectlyCodeFixTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to The code contains a tab or space character which is not consistent with the current project settings..
         /// </summary>
-        internal static string BeyondUseTabsCorrectlyDiagnosticDescription {
+        internal static string BEY0003UseTabsCorrectlyDiagnosticDescription {
             get {
-                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticDescription", resourceCulture);
+                return ResourceManager.GetString("BEY0003UseTabsCorrectlyDiagnosticDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Tabs and spaces should be used correctly.
         /// </summary>
-        internal static string BeyondUseTabsCorrectlyDiagnosticMessageFormat {
+        internal static string BEY0003UseTabsCorrectlyDiagnosticMessageFormat {
             get {
-                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticMessageFormat", resourceCulture);
+                return ResourceManager.GetString("BEY0003UseTabsCorrectlyDiagnosticMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Use tabs correctly.
         /// </summary>
-        internal static string BeyondUseTabsCorrectlyDiagnosticTitle {
+        internal static string BEY0003UseTabsCorrectlyDiagnosticTitle {
             get {
-                return ResourceManager.GetString("BeyondUseTabsCorrectlyDiagnosticTitle", resourceCulture);
+                return ResourceManager.GetString("BEY0003UseTabsCorrectlyDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# element does not use lowerCamelCase style..
+        /// </summary>
+        internal static string BEY0004ElementMustNamedLowerCamelCaseDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0004ElementMustNamedLowerCamelCaseDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element should be named with lowerCamelCase style.
+        /// </summary>
+        internal static string BEY0004ElementMustNamedLowerCamelCaseDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0004ElementMustNamedLowerCamelCaseDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with lowerCamelCase style.
+        /// </summary>
+        internal static string BEY0004ElementMustNamedLowerCamelCaseDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0004ElementMustNamedLowerCamelCaseDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# element does not use UpperPascalCase style..
+        /// </summary>
+        internal static string BEY0005ElementMustNamedUpperPascalCaseDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0005ElementMustNamedUpperPascalCaseDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element should be named with UpperPascalCase style.
+        /// </summary>
+        internal static string BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with UpperPascalCase style.
+        /// </summary>
+        internal static string BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# element does not use ALL_CAPS style..
+        /// </summary>
+        internal static string BEY0006ElementMustNamedAllCapsDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0006ElementMustNamedAllCapsDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element should be named with ALL_CAPS style.
+        /// </summary>
+        internal static string BEY0006ElementMustNamedAllCapsDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0006ElementMustNamedAllCapsDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with ALL_CAPS style.
+        /// </summary>
+        internal static string BEY0006ElementMustNamedAllCapsDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0006ElementMustNamedAllCapsDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a C# interface does not begin with the capital letter I..
+        /// </summary>
+        internal static string BEY0007InterfaceNamesMustBeginWithIDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0007InterfaceNamesMustBeginWithIDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interface names should begin with I.
+        /// </summary>
+        internal static string BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interface &apos;{0}&apos; names should begin with I.
+        /// </summary>
+        internal static string BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a private method does not begin with the &apos;_&apos; or use _UpperPascalCase style..
+        /// </summary>
+        internal static string BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private method should be named with _UpperPascalCase with prefix &apos;_&apos;.
+        /// </summary>
+        internal static string BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private method &apos;{0}&apos; should be named with _UpperPascalCase with prefix &apos;_&apos;.
+        /// </summary>
+        internal static string BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a static field does not begin with &apos;s_&apos;..
+        /// </summary>
+        internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static field name should begin with &apos;s_&apos;.
+        /// </summary>
+        internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static field &apos;{0}&apos; names should begin with &apos;s_&apos;.
+        /// </summary>
+        internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a non-public field does not begin with &apos;m_&apos;..
+        /// </summary>
+        internal static string BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-public field names should begin with &apos;m_&apos;.
+        /// </summary>
+        internal static string BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-public field &apos;{0}&apos; names should begin with &apos;m_&apos;.
+        /// </summary>
+        internal static string BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of a non-public unity [SerializeField] should begin with &apos;_&apos;..
+        /// </summary>
+        internal static string BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticDescription {
+            get {
+                return ResourceManager.GetString("BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticDescript" +
+                        "ion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-public unity [SerializeField] should begin with &apos;_&apos;.
+        /// </summary>
+        internal static string BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
+            get {
+                return ResourceManager.GetString("BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticMessageF" +
+                        "ormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-public unity [SerializeField] &apos;{0}&apos; should begin with &apos;_&apos;.
+        /// </summary>
+        internal static string BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle {
+            get {
+                return ResourceManager.GetString("BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle", resourceCulture);
             }
         }
         

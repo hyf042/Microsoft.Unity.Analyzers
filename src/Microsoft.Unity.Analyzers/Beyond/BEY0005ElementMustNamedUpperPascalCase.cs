@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System;
@@ -23,37 +18,20 @@ namespace Microsoft.Unity.Analyzers;
 /// <summary>
 /// The name of a C# element does not begin with an upper-case letter.
 /// </summary>
-/// <remarks>
-/// <para>A violation of this rule occurs when the names of certain types of elements do not begin with an
-/// upper-case letter. The following types of elements should use an upper-case letter as the first letter of the
-/// element name: namespaces, classes, enums, structs, delegates, events, methods, and properties.</para>
-///
-/// <para>In addition, any field which is public, internal, or marked with the const attribute should begin with an
-/// upper-case letter. Non-private readonly fields should also be named using an upper-case letter.</para>
-///
-/// <para>If the field or variable name is intended to match the name of an item associated with Win32 or COM, and
-/// thus needs to begin with a lower-case letter, place the field or variable within a special <c>NativeMethods</c>
-/// class. A <c>NativeMethods</c> class is any class which contains a name ending in <c>NativeMethods</c>, and is
-/// intended as a placeholder for Win32 or COM wrappers. StyleCop will ignore this violation if the item is placed
-/// within a <c>NativeMethods</c> class.</para>
-///
-/// <para>For namespace components that begin with a small letter, due to branding issues or other reasons, add the
-/// term to the <c>allowedNamespaceComponents</c> list.</para>
-/// </remarks>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
+public class BEY0005ElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 {
 	private const string RuleId = "BEY0005";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondElementMustNamedUpperPascalCaseDiagnosticTitle,
-		messageFormat: Strings.BeyondElementMustNamedUpperPascalCaseDiagnosticMessageFormat,
+		title: Strings.BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle,
+		messageFormat: Strings.BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondElementMustNamedUpperPascalCaseDiagnosticDescription);
+		description: Strings.BEY0005ElementMustNamedUpperPascalCaseDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> BaseNamespaceDeclarationAction = HandleBaseNamespaceDeclaration;
 	private static readonly Action<SyntaxNodeAnalysisContext> ClassDeclarationAction = HandleClassDeclaration;
@@ -76,7 +54,8 @@ public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 		context.RegisterCompilationStartAction(context =>
 		{
 			// Note: Interfaces are handled by BEY0007
-			// Note: Fields are handled by BEY0004 through BEY0008
+			// Note: Properties and events are handled by BEY0004
+			// Note: Fields are handled by BEY0004, BEY0006, BEY0009, BEY0010, BEY0011
 			context.RegisterSyntaxNodeAction(BaseNamespaceDeclarationAction, SyntaxKind.NamespaceDeclaration);
 			context.RegisterSyntaxNodeAction(ClassDeclarationAction, SyntaxKind.ClassDeclaration);
 			context.RegisterSyntaxNodeAction(RecordDeclarationAction, SyntaxKind.RecordDeclaration);
@@ -87,6 +66,7 @@ public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 			context.RegisterSyntaxNodeAction(DelegateDeclarationAction, SyntaxKind.DelegateDeclaration);
 			context.RegisterSyntaxNodeAction(MethodDeclarationAction, SyntaxKind.MethodDeclaration);
 			context.RegisterSyntaxNodeAction(LocalFunctionStatementAction, SyntaxKind.LocalFunctionStatement);
+			// positional parameters of recordsare treated as properties, only handle this case here
 			context.RegisterSyntaxNodeAction(ParameterAction, SyntaxKind.Parameter);
 		});
 	}
@@ -161,9 +141,9 @@ public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 		}
 
 		if (context.SemanticModel.GetDeclaredSymbol(methodDeclaration).DeclaredAccessibility == Accessibility.Private
-			&& EmptyUnityMessageAnalyzer.CheckIsUnityMessage(context, methodDeclaration))
+			|| UnityHelper.CheckIsUnityMessage(context, methodDeclaration))
 		{
-			// Private Non-Unity-Message Method is handled by BEY0008.
+			// Private Method is handled by BEY0008, don't analyze unity message.
 			return;
 		}
 
@@ -201,6 +181,17 @@ public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
+		if (NamedTypeHelpers.IsContainedInNativeMethodsClass(context.Node))
+		{
+			return;
+		}
+
+		var symbolInfo = context.SemanticModel.GetDeclaredSymbol(identifier.Parent);
+		if (symbolInfo != null && NamedTypeHelpers.IsImplementingAnInterfaceMember(symbolInfo))
+		{
+			return;
+		}
+
 		/* This code uses char.IsLower(...) instead of !char.IsUpper(...) for all of the following reasons:
 		 *  1. Foreign languages may not have upper case variants for certain characters
 		 *  2. This diagnostic appears targeted for "English" identifiers.
@@ -218,30 +209,19 @@ public class BeyondElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
-		if (NamedTypeHelpers.IsContainedInNativeMethodsClass(context.Node))
-		{
-			return;
-		}
-
-		var symbolInfo = context.SemanticModel.GetDeclaredSymbol(identifier.Parent);
-		if (symbolInfo != null && NamedTypeHelpers.IsImplementingAnInterfaceMember(symbolInfo))
-		{
-			return;
-		}
-
 		context.ReportDiagnostic(Diagnostic.Create(Rule, identifier.GetLocation(), identifier.ValueText));
 	}
 }
 
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondElementMustNamedUpperPascalCaseCodeFix : CodeFixProvider
+public class BEY0005ElementMustNamedUpperPascalCaseCodeFix : CodeFixProvider
 {
 	/// <summary>
 	/// During conflict resolution for fields, this suffix is tried before falling back to 1, 2, 3, etc...
 	/// </summary>
 	private const string Suffix = "Value";
 
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondElementMustNamedUpperPascalCaseAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0005ElementMustNamedUpperPascalCaseAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -281,7 +261,7 @@ public class BeyondElementMustNamedUpperPascalCaseCodeFix : CodeFixProvider
 					CodeAction.Create(
 						string.Format(Strings.RenameToCodeFix, newName),
 						(Func<CancellationToken, Task<Document>>)RenameNamespaceAsync,
-						nameof(BeyondElementMustNamedUpperPascalCaseCodeFix) + "_" + diagnostic.Id),
+						nameof(BEY0005ElementMustNamedUpperPascalCaseCodeFix) + "_" + diagnostic.Id),
 					diagnostic);
 			}
 			else if (memberSyntax != null)
@@ -315,7 +295,7 @@ public class BeyondElementMustNamedUpperPascalCaseCodeFix : CodeFixProvider
 					CodeAction.Create(
 						string.Format(Strings.RenameToCodeFix, newName),
 						cancellationToken => RenameHelper.RenameSymbolAsync(document, root, token, newName, cancellationToken),
-						nameof(BeyondElementMustNamedUpperPascalCaseCodeFix) + "_" + diagnostic.Id + "_" + usedSuffix + "_" + index),
+						nameof(BEY0005ElementMustNamedUpperPascalCaseCodeFix) + "_" + diagnostic.Id + "_" + usedSuffix + "_" + index),
 					diagnostic);
 			}
 		}

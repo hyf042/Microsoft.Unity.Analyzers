@@ -56,22 +56,22 @@ namespace Microsoft.Unity.Analyzers;
 /// </code>
 /// </remarks>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class BeyondBracesMustNotBeOmittedAnalyzer : DiagnosticAnalyzer
+public class BEY0001BracesMustNotBeOmittedAnalyzer : DiagnosticAnalyzer
 {
 	/// <summary>
-	/// The ID for diagnostics produced by the <see cref="BeyondBracesMustNotBeOmittedAnalyzer"/> analyzer.
+	/// The ID for diagnostics produced by the <see cref="BEY0001BracesMustNotBeOmittedAnalyzer"/> analyzer.
 	/// </summary>
 	private const string RuleId = "BEY0001";
 
 	internal static readonly DiagnosticDescriptor Rule = new(
 		id: RuleId,
-		title: Strings.BeyondBracesMustNotBeOmittedDiagnosticTitle,
-		messageFormat: Strings.BeyondBracesMustNotBeOmittedDiagnosticMessageFormat,
+		title: Strings.BEY0001BracesMustNotBeOmittedDiagnosticTitle,
+		messageFormat: Strings.BEY0001BracesMustNotBeOmittedDiagnosticMessageFormat,
 		category: DiagnosticCategory.Maintainability,
 		defaultSeverity: DiagnosticSeverity.Info,
 		isEnabledByDefault: true,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
-		description: Strings.BeyondBracesMustNotBeOmittedDiagnosticDescription);
+		description: Strings.BEY0001BracesMustNotBeOmittedDiagnosticDescription);
 
 	private static readonly Action<SyntaxNodeAnalysisContext> IfStatementAction = HandleIfStatement;
 	private static readonly Action<SyntaxNodeAnalysisContext> UsingStatementAction = HandleUsingStatement;
@@ -144,15 +144,15 @@ public class BeyondBracesMustNotBeOmittedAnalyzer : DiagnosticAnalyzer
 }
 
 /// <summary>
-/// Implements a code fix for <see cref="BeyondBracesMustNotBeOmittedAnalyzer"/>.
+/// Implements a code fix for <see cref="BEY0001BracesMustNotBeOmittedAnalyzer"/>.
 /// </summary>
 /// <remarks>
 /// <para>To fix a violation of this rule, the violating statement will be converted to a block statement.</para>
 /// </remarks>
 [ExportCodeFixProvider(LanguageNames.CSharp)]
-public class BeyondBracesMustNotBeOmittedCodeFix : CodeFixProvider
+public class BEY0001BracesMustNotBeOmittedCodeFix : CodeFixProvider
 {
-	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BeyondBracesMustNotBeOmittedAnalyzer.Rule.Id);
+	public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(BEY0001BracesMustNotBeOmittedAnalyzer.Rule.Id);
 
 	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
@@ -175,9 +175,9 @@ public class BeyondBracesMustNotBeOmittedCodeFix : CodeFixProvider
 
 			context.RegisterCodeFix(
 				CodeAction.Create(
-					Strings.BeyondBracesMustNotBeOmittedCodeFixTitle,
+					Strings.BEY0001BracesMustNotBeOmittedCodeFixTitle,
 					cancellationToken => GetTransformedDocumentAsync(context.Document, syntaxRoot, node, cancellationToken),
-					nameof(BeyondBracesMustNotBeOmittedCodeFix)),
+					nameof(BEY0001BracesMustNotBeOmittedCodeFix)),
 				diagnostic);
 		}
 	}

@@ -16,6 +16,7 @@ namespace Microsoft.Unity.Analyzers.StyleCop;
 
 /// <summary>
 /// Provides helper methods to work with trivia (lists).
+/// **NOTICE** this class is copied from https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/StyleCop.Analyzers/StyleCop.Analyzers/Helpers/TriviaHelper.cs
 /// </summary>
 internal static class TriviaHelper
 {

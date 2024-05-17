@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -10,9 +5,9 @@ using Xunit;
 namespace Microsoft.Unity.Analyzers.Tests;
 
 /// <summary>
-/// Unit tests for <see cref="BeyondBracesMustNotBeOmittedAnalyzer"/>.
+/// Unit tests for <see cref="BEY0001BracesMustNotBeOmittedAnalyzer"/>.
 /// </summary>
-public class BeyondBracesMustNotBeOmittedTests : BaseCodeFixVerifierTest<BeyondBracesMustNotBeOmittedAnalyzer, BeyondBracesMustNotBeOmittedCodeFix>
+public class BEY0001BracesMustNotBeOmittedTests : BaseCodeFixVerifierTest<BEY0001BracesMustNotBeOmittedAnalyzer, BEY0001BracesMustNotBeOmittedCodeFix>
 {
 	/// <summary>
 	/// Gets the statements that will be used in the theory test cases.
@@ -37,8 +32,6 @@ public class BeyondBracesMustNotBeOmittedTests : BaseCodeFixVerifierTest<BeyondB
 	protected override bool IgnoreLineEndingDifferences => true;
 	protected override bool AllowUnsafe => true;
 
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
-
 	/// <summary>
 	/// Verifies that a statement followed by a block without braces will produce a warning.
 	/// </summary>
@@ -49,7 +42,7 @@ public class BeyondBracesMustNotBeOmittedTests : BaseCodeFixVerifierTest<BeyondB
 	[MemberData(nameof(TestStatements))]
 	public async Task TestStatementWithoutBracesAsync(string statementText)
 	{
-		var expected = Diagnostic().WithLocation(7, 13);
+		var expected = ExpectDiagnostic().WithLocation(7, 13);
 		await VerifyCSharpDiagnosticAsync(this.GenerateTestStatement(statementText), expected);
 	}
 
@@ -84,7 +77,7 @@ public class Foo
     }
 }";
 
-		var expected = Diagnostic().WithLocation(7, 13);
+		var expected = ExpectDiagnostic().WithLocation(7, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -122,8 +115,8 @@ public class Foo
 
 		var expected = new[]
 		{
-			Diagnostic().WithLocation(7, 13),
-			Diagnostic().WithLocation(9, 13),
+			ExpectDiagnostic().WithLocation(7, 13),
+			ExpectDiagnostic().WithLocation(9, 13),
 		};
 
 		await VerifyCSharpDiagnosticAsync(testCode, expected);
@@ -204,8 +197,8 @@ public class Foo
 
 		var expected = new[]
 		{
-			Diagnostic().WithLocation(6, 21),
-			Diagnostic().WithLocation(6, 33),
+			ExpectDiagnostic().WithLocation(6, 21),
+			ExpectDiagnostic().WithLocation(6, 33),
 		};
 
 		await VerifyCSharpDiagnosticAsync(testCode, expected);
@@ -248,8 +241,8 @@ public class Foo
 
 		var expected = new[]
 		{
-			Diagnostic().WithLocation(7, 13),
-			Diagnostic().WithLocation(9, 13),
+			ExpectDiagnostic().WithLocation(7, 13),
+			ExpectDiagnostic().WithLocation(9, 13),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
@@ -286,7 +279,7 @@ public class Foo
     }
 }";
 
-		var expected = Diagnostic().WithLocation(8, 13);
+		var expected = ExpectDiagnostic().WithLocation(8, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
 	}
 
@@ -323,8 +316,8 @@ public class Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(6, 21),
-			Diagnostic().WithLocation(6, 33),
+			ExpectDiagnostic().WithLocation(6, 21),
+			ExpectDiagnostic().WithLocation(6, 33),
 		};
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
 	}
@@ -374,9 +367,9 @@ public class Foo
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithLocation(7, 13),
-			Diagnostic().WithLocation(11, 13),
-			Diagnostic().WithLocation(12, 17),
+			ExpectDiagnostic().WithLocation(7, 13),
+			ExpectDiagnostic().WithLocation(11, 13),
+			ExpectDiagnostic().WithLocation(12, 17),
 		};
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
 
@@ -402,7 +395,7 @@ public class Foo
     }
 }";
 
-		var expected = Diagnostic().WithLocation(8, 13);
+		var expected = ExpectDiagnostic().WithLocation(8, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, testCode);
 	}
 
@@ -438,7 +431,7 @@ public class Foo
 	[MemberData(nameof(TestStatements))]
 	public async Task TestCodeFixForStatementAsync(string statementText)
 	{
-		var expected = Diagnostic().WithLocation(7, 13);
+		var expected = ExpectDiagnostic().WithLocation(7, 13);
 		await VerifyCSharpDiagnosticAndFixAsync(
 			this.GenerateTestStatement(statementText), expected, this.GenerateFixedTestStatement(statementText));
 	}

@@ -7,6 +7,9 @@
 
 namespace Microsoft.Unity.Analyzers.StyleCop;
 
+/// <summary>
+/// **NOTICE** this class is copied from https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/ObjectModel/IndentationSettings.cs
+/// </summary>
 internal class IndentationSettings
 {
 	/// <summary>

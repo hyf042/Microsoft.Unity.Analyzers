@@ -11,6 +11,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Microsoft.Unity.Analyzers.StyleCop;
 
+/// <summary>
+/// **NOTICE** this class is copied from https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/StyleCop.Analyzers/StyleCop.Analyzers/Lightup/SyntaxKindEx.cs
+/// </summary>
 internal static class SyntaxKindEx
 {
 	public const SyntaxKind ManagedKeyword = (SyntaxKind)8445;
@@ -28,6 +31,9 @@ internal static class SyntaxKindEx
 	public const SyntaxKind CollectionExpression = (SyntaxKind)9076;
 }
 
+/// <summary>
+/// **NOTICE** this class is copied from https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/StyleCop.Analyzers/StyleCop.Analyzers/Helpers/SyntaxKinds.cs
+/// </summary>
 internal static class SyntaxKinds
 {
 	/// <summary>

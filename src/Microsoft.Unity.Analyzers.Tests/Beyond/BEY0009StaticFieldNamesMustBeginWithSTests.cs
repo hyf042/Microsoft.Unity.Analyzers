@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System.Threading.Tasks;
@@ -10,9 +5,11 @@ using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondStaticFieldNamesMustBeginWithSTests : BaseCodeFixVerifierTest<BeyondStaticFieldNamesMustBeginWithSAnalyzer, BeyondStaticFieldNamesMustBeginWithSCodeFix>
+/// <summary>
+/// Unit tests for <see cref="BEY0009StaticFieldNamesMustBeginWithSAnalyzer"/>.
+/// </summary>
+public class BEY0009StaticFieldNamesMustBeginWithSTests : BaseCodeFixVerifierTest<BEY0009StaticFieldNamesMustBeginWithSAnalyzer, BEY0009StaticFieldNamesMustBeginWithSCodeFix>
 {
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
 	protected override string[] DisabledDiagnostics
 	{
 		get =>
@@ -57,7 +54,7 @@ string Bar = """", car = """", Dar = """";
 	}
 
 	[Fact]
-	public async Task TestThatDiagnosticIsNotReportedForEventFieldsAsync()
+	public async Task TestThatDiagnosticIsNotReported_EventFieldsAsync()
 	{
 		var testCode = @"using System;
 public class TypeName
@@ -72,8 +69,20 @@ public class TypeName
 	[Theory]
 	[InlineData("public static")]
 	[InlineData("internal static")]
-	[InlineData("protected static")]
 	[InlineData("protected internal static")]
+	public async Task TestThatDiagnosticIsNotReported_PublicStaticFieldsAsync(string modifiers)
+	{
+		var testCode = @"public class Foo
+{{
+{0}
+string Bar, car, Dar;
+}}";
+
+		await VerifyCSharpDiagnosticAsync(string.Format(testCode, modifiers));
+	}
+
+	[Theory]
+	[InlineData("protected static")]
 	[InlineData("private static")]
 	[InlineData("static")]
 	public async Task TestThatDiagnosticIsReported_SingleFieldAsync(string modifiers)
@@ -102,43 +111,40 @@ string ___Jar;
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithArguments("Bar").WithLocation(4, 8),
-			Diagnostic().WithArguments("Dar").WithLocation(8, 8),
-			Diagnostic().WithArguments("_Far").WithLocation(12, 8),
-			Diagnostic().WithArguments("__Har").WithLocation(16, 8),
-			Diagnostic().WithArguments("___Jar").WithLocation(20, 8),
+			ExpectDiagnostic().WithArguments("Bar").WithLocation(4, 8),
+			ExpectDiagnostic().WithArguments("Dar").WithLocation(8, 8),
+			ExpectDiagnostic().WithArguments("_Far").WithLocation(12, 8),
+			ExpectDiagnostic().WithArguments("__Har").WithLocation(16, 8),
+			ExpectDiagnostic().WithArguments("___Jar").WithLocation(20, 8),
 		};
 
 		var fixedCode = @"public class Foo
 {{
 {0}
-string s_Bar;
+string s_bar;
 {0}
 string s_car;
 {0}
-string s_Dar;
+string s_dar;
 {0}
 string s_ear;
 {0}
-string s_Far;
+string s_far;
 {0}
 string s__gar;
 {0}
-string s__Har;
+string s_har;
 {0}
 string s___iar;
 {0}
-string s___Jar;
+string s__jar;
 }}";
 
 		await VerifyCSharpDiagnosticAndFixAsync(string.Format(testCode, modifiers), expected, string.Format(fixedCode, modifiers));
 	}
 
 	[Theory]
-	[InlineData("public static")]
-	[InlineData("internal static")]
 	[InlineData("protected static")]
-	[InlineData("protected internal static")]
 	[InlineData("private static")]
 	[InlineData("static")]
 	public async Task TestThatDiagnosticIsReported_MultipleFieldsAsync(string modifiers)
@@ -151,15 +157,15 @@ string Bar, car, Dar;
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithArguments("Bar").WithLocation(4, 8),
-			Diagnostic().WithArguments("car").WithLocation(4, 13),
-			Diagnostic().WithArguments("Dar").WithLocation(4, 18),
+			ExpectDiagnostic().WithArguments("Bar").WithLocation(4, 8),
+			ExpectDiagnostic().WithArguments("car").WithLocation(4, 13),
+			ExpectDiagnostic().WithArguments("Dar").WithLocation(4, 18),
 		};
 
 		var fixedCode = @"public class Foo
 {{
 {0}
-string s_Bar, s_car, s_Dar;
+string s_bar, s_car, s_dar;
 }}";
 
 		await VerifyCSharpDiagnosticAndFixAsync(string.Format(testCode, modifiers), expected, string.Format(fixedCode, modifiers));
@@ -179,19 +185,42 @@ string s_Bar, s_car, s_Dar;
 		var fixedTestCode = @"public class Foo
 {
     private static string s_ = ""bar"";
-    private static string s__ = ""baz"";
-    private static string s___ = ""qux"";
+    private static string s_1 = ""baz"";
+    private static string s__ = ""qux"";
     private static string s_someVar_ = ""bar"";
 }";
 
 		DiagnosticResult[] expected =
 		{
-			Diagnostic().WithArguments("_").WithLocation(3, 27),
-			Diagnostic().WithArguments("__").WithLocation(4, 27),
-			Diagnostic().WithArguments("___").WithLocation(5, 27),
-			Diagnostic().WithArguments("someVar_").WithLocation(6, 27),
+			ExpectDiagnostic().WithArguments("_").WithLocation(3, 27),
+			ExpectDiagnostic().WithArguments("__").WithLocation(4, 27),
+			ExpectDiagnostic().WithArguments("___").WithLocation(5, 27),
+			ExpectDiagnostic().WithArguments("someVar_").WithLocation(6, 27),
 		};
 
+		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
+	}
+
+	[Fact]
+	public async Task TestFieldWithStructAsync()
+	{
+		var testCode = @"public struct Foo
+{
+    private static string test1 = ""test1"";
+    private static string test2 = ""test2"";
+}";
+
+		var fixedTestCode = @"public struct Foo
+{
+    private static string s_test1 = ""test1"";
+    private static string s_test2 = ""test2"";
+}";
+
+		DiagnosticResult[] expected =
+		{
+			ExpectDiagnostic().WithArguments("test1").WithLocation(3, 27),
+			ExpectDiagnostic().WithArguments("test2").WithLocation(4, 27),
+		};
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
 	}
 
@@ -200,17 +229,17 @@ string s_Bar, s_car, s_Dar;
 	{
 		var testCode = @"public class Foo
 {
-    public static string s_test = ""test1"";
-    public static string test = ""test2"";
+    private static string s_test = ""test1"";
+    private static string test = ""test2"";
 }";
 
 		var fixedTestCode = @"public class Foo
 {
-    public static string s_test = ""test1"";
-    public static string s_test1 = ""test2"";
+    private static string s_test = ""test1"";
+    private static string s_test1 = ""test2"";
 }";
 
-		var expected = Diagnostic().WithArguments("test").WithLocation(4, 26);
+		var expected = ExpectDiagnostic().WithArguments("test").WithLocation(4, 27);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
 	}
 

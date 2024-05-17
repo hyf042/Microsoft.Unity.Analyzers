@@ -1,8 +1,3 @@
-/*--------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *-------------------------------------------------------------------------------------------*/
-
 #nullable disable
 
 using System.Collections.Generic;
@@ -11,13 +6,15 @@ using Xunit;
 
 namespace Microsoft.Unity.Analyzers.Tests;
 
-public class BeyondBracesForMultiLineStatementsMustNotShareLineTests : BaseCodeFixVerifierTest<BeyondBracesForMultiLineStatementsMustNotShareLineAnalyzer, BeyondBracesForMultiLineStatementsMustNotShareLineCodeFix>
+/// <summary>
+/// Unit tests for <see cref="BEY0002BracesForMultiLineStatementsMustNotShareLineAnalyzer"/>.
+/// </summary>
+public class BEY0002BracesForMultiLineStatementsMustNotShareLineTests : BaseCodeFixVerifierTest<BEY0002BracesForMultiLineStatementsMustNotShareLineAnalyzer, BEY0002BracesForMultiLineStatementsMustNotShareLineCodeFix>
 {
 	protected override bool IgnoreLineEndingDifferences => true;
 	protected override bool AllowUnsafe => true;
 	protected override bool ExpectErrorAsDiagnosticResult => true;
 
-	private DiagnosticResult Diagnostic() => ExpectDiagnostic();
 	protected override string[] DisabledDiagnostics
 	{
 		get =>
@@ -94,18 +91,18 @@ public class TestClass
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-			Diagnostic().WithLocation(6, 13),
-			Diagnostic().WithLocation(7, 24),
-			Diagnostic().WithLocation(9, 13),
-			Diagnostic().WithLocation(9, 31),
-			Diagnostic().WithLocation(11, 13),
-			Diagnostic().WithLocation(11, 20),
-			Diagnostic().WithLocation(14, 9),
-			Diagnostic().WithLocation(14, 29),
-			Diagnostic().WithLocation(15, 9),
-			Diagnostic().WithLocation(15, 17),
-			Diagnostic().WithLocation(16, 9),
-			Diagnostic().WithLocation(16, 19),
+			ExpectDiagnostic().WithLocation(6, 13),
+			ExpectDiagnostic().WithLocation(7, 24),
+			ExpectDiagnostic().WithLocation(9, 13),
+			ExpectDiagnostic().WithLocation(9, 31),
+			ExpectDiagnostic().WithLocation(11, 13),
+			ExpectDiagnostic().WithLocation(11, 20),
+			ExpectDiagnostic().WithLocation(14, 9),
+			ExpectDiagnostic().WithLocation(14, 29),
+			ExpectDiagnostic().WithLocation(15, 9),
+			ExpectDiagnostic().WithLocation(15, 17),
+			ExpectDiagnostic().WithLocation(16, 9),
+			ExpectDiagnostic().WithLocation(16, 19),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -116,9 +113,6 @@ public class TestClass
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid array initializers defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestArrayInitializersValidAsync()
@@ -324,26 +318,26 @@ public class TestClass
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-			Diagnostic().WithLocation(5, 9),
-			Diagnostic().WithLocation(5, 11),
-			Diagnostic().WithLocation(8, 9),
-			Diagnostic().WithLocation(8, 16),
-			Diagnostic().WithLocation(11, 9),
-			Diagnostic().WithLocation(16, 18),
-			Diagnostic().WithLocation(19, 9),
-			Diagnostic().WithLocation(19, 16),
-			Diagnostic().WithLocation(22, 9),
-			Diagnostic().WithLocation(27, 18),
-			Diagnostic().WithLocation(32, 13),
-			Diagnostic().WithLocation(32, 15),
-			Diagnostic().WithLocation(35, 13),
-			Diagnostic().WithLocation(35, 20),
-			Diagnostic().WithLocation(38, 13),
-			Diagnostic().WithLocation(43, 22),
-			Diagnostic().WithLocation(46, 13),
-			Diagnostic().WithLocation(46, 20),
-			Diagnostic().WithLocation(49, 13),
-			Diagnostic().WithLocation(54, 22),
+			ExpectDiagnostic().WithLocation(5, 9),
+			ExpectDiagnostic().WithLocation(5, 11),
+			ExpectDiagnostic().WithLocation(8, 9),
+			ExpectDiagnostic().WithLocation(8, 16),
+			ExpectDiagnostic().WithLocation(11, 9),
+			ExpectDiagnostic().WithLocation(16, 18),
+			ExpectDiagnostic().WithLocation(19, 9),
+			ExpectDiagnostic().WithLocation(19, 16),
+			ExpectDiagnostic().WithLocation(22, 9),
+			ExpectDiagnostic().WithLocation(27, 18),
+			ExpectDiagnostic().WithLocation(32, 13),
+			ExpectDiagnostic().WithLocation(32, 15),
+			ExpectDiagnostic().WithLocation(35, 13),
+			ExpectDiagnostic().WithLocation(35, 20),
+			ExpectDiagnostic().WithLocation(38, 13),
+			ExpectDiagnostic().WithLocation(43, 22),
+			ExpectDiagnostic().WithLocation(46, 13),
+			ExpectDiagnostic().WithLocation(46, 20),
+			ExpectDiagnostic().WithLocation(49, 13),
+			ExpectDiagnostic().WithLocation(54, 22),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -424,14 +418,14 @@ public class TestClass
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-				Diagnostic().WithLocation(5, 9),
-				Diagnostic().WithLocation(5, 16),
-				Diagnostic().WithLocation(8, 9),
-				Diagnostic().WithLocation(13, 18),
-				Diagnostic().WithLocation(18, 13),
-				Diagnostic().WithLocation(18, 20),
-				Diagnostic().WithLocation(21, 13),
-				Diagnostic().WithLocation(26, 22),
+				ExpectDiagnostic().WithLocation(5, 9),
+				ExpectDiagnostic().WithLocation(5, 16),
+				ExpectDiagnostic().WithLocation(8, 9),
+				ExpectDiagnostic().WithLocation(13, 18),
+				ExpectDiagnostic().WithLocation(18, 13),
+				ExpectDiagnostic().WithLocation(18, 20),
+				ExpectDiagnostic().WithLocation(21, 13),
+				ExpectDiagnostic().WithLocation(26, 22),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -517,9 +511,9 @@ public class TestClass
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-				Diagnostic().WithLocation(14, 9),
-				Diagnostic().WithLocation(24, 28),
-				Diagnostic().WithLocation(29, 29),
+				ExpectDiagnostic().WithLocation(14, 9),
+				ExpectDiagnostic().WithLocation(24, 28),
+				ExpectDiagnostic().WithLocation(29, 29),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -604,8 +598,8 @@ public class TestClass
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-				Diagnostic().WithLocation(14, 9),
-				Diagnostic().WithLocation(24, 34),
+				ExpectDiagnostic().WithLocation(14, 9),
+				ExpectDiagnostic().WithLocation(24, 34),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -618,10 +612,6 @@ public class TestClass
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid block defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestBlockValidAsync()
@@ -641,10 +631,10 @@ public class Foo
             Debug.Indent();
         }
 
-        // valid block #3 (valid only for SA1500)
+        // valid block #3
         { }
 
-        // valid block #4 (valid only for SA1500)
+        // valid block #4
         { Debug.Indent(); }
     }
 }";
@@ -695,8 +685,8 @@ public class Foo
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-				Diagnostic().WithLocation(8, 9),
-				Diagnostic().WithLocation(13, 29),
+				ExpectDiagnostic().WithLocation(8, 9),
+				ExpectDiagnostic().WithLocation(13, 29),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -709,10 +699,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid constructors defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestConstructorValidAsync()
@@ -732,13 +718,13 @@ public class Foo
         Debug.Indent();
     }
 
-    // Valid constructor #3 (Valid only for SA1500)
+    // Valid constructor #3
     public Foo(byte a) { }
 
-    // Valid constructor #4 (Valid only for SA1500)
+    // Valid constructor #4
     public Foo(short a) { Debug.Indent(); }
 
-    // Valid constructor #5 (Valid only for SA1500)
+    // Valid constructor #5
     public Foo(ushort a) 
     { Debug.Indent(); }
 }";
@@ -828,23 +814,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid constructor #1
-			Diagnostic().WithLocation(6, 18),
+			ExpectDiagnostic().WithLocation(6, 18),
 
 			// Invalid constructor #2
-			Diagnostic().WithLocation(10, 24),
+			ExpectDiagnostic().WithLocation(10, 24),
 
 			// Invalid constructor #3
-			Diagnostic().WithLocation(15, 24),
-			Diagnostic().WithLocation(16, 25),
+			ExpectDiagnostic().WithLocation(15, 24),
+			ExpectDiagnostic().WithLocation(16, 25),
 
 			// Invalid constructor #4
-			Diagnostic().WithLocation(19, 25),
+			ExpectDiagnostic().WithLocation(19, 25),
 
 			// Invalid constructor #5
-			Diagnostic().WithLocation(25, 25),
+			ExpectDiagnostic().WithLocation(25, 25),
 
 			// Invalid constructor #6
-			Diagnostic().WithLocation(29, 5),
+			ExpectDiagnostic().WithLocation(29, 5),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -857,10 +843,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid delegates defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestDelegateValidAsync()
@@ -1086,42 +1068,42 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid delegate #1
-			Diagnostic().WithLocation(14, 37),
+			ExpectDiagnostic().WithLocation(14, 37),
 
 			// Invalid delegate #2
-			Diagnostic().WithLocation(18, 37),
+			ExpectDiagnostic().WithLocation(18, 37),
 
 			// Invalid delegate #3
-			Diagnostic().WithLocation(23, 37),
-			Diagnostic().WithLocation(24, 29),
+			ExpectDiagnostic().WithLocation(23, 37),
+			ExpectDiagnostic().WithLocation(24, 29),
 
 			// Invalid delegate #4
-			Diagnostic().WithLocation(27, 37),
+			ExpectDiagnostic().WithLocation(27, 37),
 
 			// Invalid delegate #5
-			Diagnostic().WithLocation(33, 29),
+			ExpectDiagnostic().WithLocation(33, 29),
 
 			// Invalid delegate #6
-			Diagnostic().WithLocation(37, 9),
+			ExpectDiagnostic().WithLocation(37, 9),
 
 			// Invalid delegate #7
-			Diagnostic().WithLocation(41, 34),
+			ExpectDiagnostic().WithLocation(41, 34),
 
 			// Invalid delegate #8
-			Diagnostic().WithLocation(45, 34),
+			ExpectDiagnostic().WithLocation(45, 34),
 
 			// Invalid delegate #9
-			Diagnostic().WithLocation(50, 34),
-			Diagnostic().WithLocation(51, 29),
+			ExpectDiagnostic().WithLocation(50, 34),
+			ExpectDiagnostic().WithLocation(51, 29),
 
 			// Invalid delegate #10
-			Diagnostic().WithLocation(54, 34),
+			ExpectDiagnostic().WithLocation(54, 34),
 
 			// Invalid delegate #11
-			Diagnostic().WithLocation(60, 29),
+			ExpectDiagnostic().WithLocation(60, 29),
 
 			// Invalid delegate #12
-			Diagnostic().WithLocation(64, 9),
+			ExpectDiagnostic().WithLocation(64, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -1134,10 +1116,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid destructors defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestDestructorValidAsync()
@@ -1163,19 +1141,19 @@ public class Foo
         }
     }
 
-    // Valid destructor #3 (Valid only for SA1500)
+    // Valid destructor #3
     public class TestClass3
     {
         ~TestClass3() { }
     }
 
-    // Valid destructor #4 (Valid only for SA1500)
+    // Valid destructor #4
     public class TestClass4
     {
         ~TestClass4() { Debug.Indent(); }
     }
 
-    // Valid destructor #5 (Valid only for SA1500)
+    // Valid destructor #5
     public class TestClass5
     {
         ~TestClass5() 
@@ -1304,23 +1282,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid destructor #1
-			Diagnostic().WithLocation(8, 23),
+			ExpectDiagnostic().WithLocation(8, 23),
 
 			// Invalid destructor #2
-			Diagnostic().WithLocation(15, 23),
+			ExpectDiagnostic().WithLocation(15, 23),
 
 			// Invalid destructor #3
-			Diagnostic().WithLocation(23, 23),
-			Diagnostic().WithLocation(24, 29),
+			ExpectDiagnostic().WithLocation(23, 23),
+			ExpectDiagnostic().WithLocation(24, 29),
 
 			// Invalid destructor #4
-			Diagnostic().WithLocation(30, 23),
+			ExpectDiagnostic().WithLocation(30, 23),
 
 			// Invalid destructor #5
-			Diagnostic().WithLocation(39, 29),
+			ExpectDiagnostic().WithLocation(39, 29),
 
 			// Invalid destructor #6
-			Diagnostic().WithLocation(46, 9),
+			ExpectDiagnostic().WithLocation(46, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -1333,10 +1311,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid do ... while statements defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestDoWhileValidAsync()
@@ -1360,13 +1334,13 @@ public class Foo
         }
         while (x == 0);
 
-        // Valid do ... while #3 (Valid only for SA1500)
+        // Valid do ... while #3
         do { } while (x == 0);
 
-        // Valid do ... while #4 (Valid only for SA1500)
+        // Valid do ... while #4
         do { x = 1; } while (x == 0);
 
-        // Valid do ... while #5 (Valid only for SA1500)
+        // Valid do ... while #5
         do 
         { x = 1; } while (x == 0);
     }
@@ -1559,42 +1533,42 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid do ... while #2
-			Diagnostic().WithLocation(13, 12),
+			ExpectDiagnostic().WithLocation(13, 12),
 
 			// Invalid do ... while #3
-			Diagnostic().WithLocation(18, 12),
+			ExpectDiagnostic().WithLocation(18, 12),
 
 			// Invalid do ... while #5
-			Diagnostic().WithLocation(30, 20),
+			ExpectDiagnostic().WithLocation(30, 20),
 
 			// Invalid do ... while #6
-			Diagnostic().WithLocation(36, 20),
+			ExpectDiagnostic().WithLocation(36, 20),
 
 			// Invalid do ... while #7
-			Diagnostic().WithLocation(40, 9),
+			ExpectDiagnostic().WithLocation(40, 9),
 
 			// Invalid do ... while #8
-			Diagnostic().WithLocation(46, 9),
+			ExpectDiagnostic().WithLocation(46, 9),
 
 			// Invalid do ... while #9
-			Diagnostic().WithLocation(50, 12),
+			ExpectDiagnostic().WithLocation(50, 12),
 
 			// Invalid do ... while #10
-			Diagnostic().WithLocation(56, 12),
+			ExpectDiagnostic().WithLocation(56, 12),
 
 			// Invalid do ... while #11
-			Diagnostic().WithLocation(61, 12),
-			Diagnostic().WithLocation(62, 20),
+			ExpectDiagnostic().WithLocation(61, 12),
+			ExpectDiagnostic().WithLocation(62, 20),
 
 			// Invalid do ... while #12
-			Diagnostic().WithLocation(66, 12),
-			Diagnostic().WithLocation(67, 20),
+			ExpectDiagnostic().WithLocation(66, 12),
+			ExpectDiagnostic().WithLocation(67, 20),
 
 			// Invalid do ... while #13
-			Diagnostic().WithLocation(70, 12),
+			ExpectDiagnostic().WithLocation(70, 12),
 
 			// Invalid do ... while #14
-			Diagnostic().WithLocation(75, 12),
+			ExpectDiagnostic().WithLocation(75, 12),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -1719,10 +1693,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid enums defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestEnumValidAsync()
@@ -1738,11 +1708,11 @@ public class Foo
         Test
     }
 
-    public enum ValidEnum3 { } /* Valid only for SA1500 */
+    public enum ValidEnum3 { }
 
-    public enum ValidEnum4 { Test }  /* Valid only for SA1500 */
+    public enum ValidEnum4 { Test }
 
-    public enum ValidEnum5 /* Valid only for SA1500 */
+    public enum ValidEnum5
     { Test }  
 }";
 
@@ -1815,23 +1785,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// InvalidEnum1
-			Diagnostic().WithLocation(3, 30),
+			ExpectDiagnostic().WithLocation(3, 30),
 
 			// InvalidEnum2
-			Diagnostic().WithLocation(6, 30),
+			ExpectDiagnostic().WithLocation(6, 30),
 
 			// InvalidEnum3
-			Diagnostic().WithLocation(10, 30),
-			Diagnostic().WithLocation(11, 14),
+			ExpectDiagnostic().WithLocation(10, 30),
+			ExpectDiagnostic().WithLocation(11, 14),
 
 			// InvalidEnum4
-			Diagnostic().WithLocation(13, 30),
+			ExpectDiagnostic().WithLocation(13, 30),
 
 			// InvalidEnum5
-			Diagnostic().WithLocation(18, 14),
+			ExpectDiagnostic().WithLocation(18, 14),
 
 			// InvalidEnum6
-			Diagnostic().WithLocation(21, 5),
+			ExpectDiagnostic().WithLocation(21, 5),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -1843,10 +1813,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid events defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestEventValidAsync()
@@ -1878,7 +1844,7 @@ public class Foo
         }
     }
 
-    // Valid event #3  (Valid for SA1500 only)
+    // Valid event #3
     public event EventHandler Event3
     {
         add { this.test += value; }
@@ -1888,7 +1854,7 @@ public class Foo
         }
     }
 
-    // Valid event #4  (Valid for SA1500 only)
+    // Valid event #4
     public event EventHandler Event4
     {
         add 
@@ -2071,30 +2037,30 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid event #1
-			Diagnostic().WithLocation(10, 13),
-			Diagnostic().WithLocation(14, 16),
+			ExpectDiagnostic().WithLocation(10, 13),
+			ExpectDiagnostic().WithLocation(14, 16),
 
 			// Invalid event #2
-			Diagnostic().WithLocation(22, 13),
-			Diagnostic().WithLocation(23, 33),
-			Diagnostic().WithLocation(25, 16),
-			Diagnostic().WithLocation(26, 33),
+			ExpectDiagnostic().WithLocation(22, 13),
+			ExpectDiagnostic().WithLocation(23, 33),
+			ExpectDiagnostic().WithLocation(25, 16),
+			ExpectDiagnostic().WithLocation(26, 33),
 
 			// Invalid event #3
-			Diagnostic().WithLocation(32, 13),
-			Diagnostic().WithLocation(35, 16),
+			ExpectDiagnostic().WithLocation(32, 13),
+			ExpectDiagnostic().WithLocation(35, 16),
 
 			// Invalid event #4
-			Diagnostic().WithLocation(44, 33),
-			Diagnostic().WithLocation(48, 33),
+			ExpectDiagnostic().WithLocation(44, 33),
+			ExpectDiagnostic().WithLocation(48, 33),
 
 			// Invalid event #5
-			Diagnostic().WithLocation(55, 9),
-			Diagnostic().WithLocation(59, 9),
+			ExpectDiagnostic().WithLocation(55, 9),
+			ExpectDiagnostic().WithLocation(59, 9),
 
 			// Invalid event #6 (Only report once for accessor statement on a single line)
-			Diagnostic().WithLocation(67, 9),
-			Diagnostic().WithLocation(70, 9),
+			ExpectDiagnostic().WithLocation(67, 9),
+			ExpectDiagnostic().WithLocation(70, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -2106,10 +2072,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid if statements defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestIfValidAsync()
@@ -2131,13 +2093,13 @@ public class Foo
             x = 1;
         }
 
-        // Valid if #3 (Valid only for SA1500)
+        // Valid if #3
         if (x == 0) { }
 
-        // Valid if #4 (Valid only for SA1500)
+        // Valid if #4
         if (x == 0) { x = 1; }
 
-        // Valid if #5 (Valid only for SA1500)
+        // Valid if #5
         if (x == 0) 
         { x = 1; }
     }
@@ -2149,10 +2111,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid if ... else statements defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestIfElseValidAsync()
@@ -2180,19 +2138,19 @@ public class Foo
             x = 1;
         }
 
-        // Valid if ... else #3 (Valid only for SA1500)
+        // Valid if ... else #3
         if (x == 0)
         {
         }
         else { }
 
-        // Valid if ... else #4 (Valid only for SA1500)
+        // Valid if ... else #4
         if (x == 0) 
         {
         }
         else { x = 1; }
 
-        // Valid if ... else #5 (Valid only for SA1500)
+        // Valid if ... else #5
         if (x == 0) 
         {
         }
@@ -2292,23 +2250,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid if #1
-			Diagnostic().WithLocation(8, 21),
+			ExpectDiagnostic().WithLocation(8, 21),
 
 			// Invalid if #2
-			Diagnostic().WithLocation(12, 21),
+			ExpectDiagnostic().WithLocation(12, 21),
 
 			// Invalid if #3
-			Diagnostic().WithLocation(17, 21),
-			Diagnostic().WithLocation(18, 20),
+			ExpectDiagnostic().WithLocation(17, 21),
+			ExpectDiagnostic().WithLocation(18, 20),
 
 			// Invalid if #4
-			Diagnostic().WithLocation(21, 21),
+			ExpectDiagnostic().WithLocation(21, 21),
 
 			// Invalid if #5
-			Diagnostic().WithLocation(27, 20),
+			ExpectDiagnostic().WithLocation(27, 20),
 
 			// Invalid if #6
-			Diagnostic().WithLocation(31, 9),
+			ExpectDiagnostic().WithLocation(31, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -2438,23 +2396,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid if ... else #1
-			Diagnostic().WithLocation(11, 14),
+			ExpectDiagnostic().WithLocation(11, 14),
 
 			// Invalid if ... else #2
-			Diagnostic().WithLocation(18, 14),
+			ExpectDiagnostic().WithLocation(18, 14),
 
 			// Invalid if ... else #3
-			Diagnostic().WithLocation(26, 14),
-			Diagnostic().WithLocation(27, 20),
+			ExpectDiagnostic().WithLocation(26, 14),
+			ExpectDiagnostic().WithLocation(27, 20),
 
 			// Invalid if ... else #4
-			Diagnostic().WithLocation(33, 14),
+			ExpectDiagnostic().WithLocation(33, 14),
 
 			// Invalid if ... else #5
-			Diagnostic().WithLocation(42, 20),
+			ExpectDiagnostic().WithLocation(42, 20),
 
 			// Invalid if ... else #6
-			Diagnostic().WithLocation(49, 9),
+			ExpectDiagnostic().WithLocation(49, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -2466,10 +2424,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid indexers defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestIndexerValidAsync()
@@ -2499,7 +2453,7 @@ public class Foo
         }
     }
 
-    // Valid indexer #3 (Valid only for SA1500)
+    // Valid indexer #3
     public bool this[short index]
     {
         get { return this.test; }
@@ -2510,7 +2464,7 @@ public class Foo
         }
     }
 
-    // Valid indexer #4 (Valid only for SA1500)
+    // Valid indexer #4
     public bool this[ushort index]
     {
         get 
@@ -2521,10 +2475,10 @@ public class Foo
         set { this.test = value; }
     }
 
-    // Valid indexer #5 (Valid only for SA1500)
+    // Valid indexer #5
     public bool this[int index] { get { return this.test; }  set { this.test = value; } }
 
-    // Valid indexer #6 (Valid only for SA1500)
+    // Valid indexer #6
     public bool this[uint index]
     { get { return this.test; }  set { this.test = value; } }
 }";
@@ -2749,46 +2703,46 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid indexer #1
-			Diagnostic().WithLocation(8, 13),
-			Diagnostic().WithLocation(12, 13),
+			ExpectDiagnostic().WithLocation(8, 13),
+			ExpectDiagnostic().WithLocation(12, 13),
 
 			// Invalid indexer #2
-			Diagnostic().WithLocation(20, 13),
-			Diagnostic().WithLocation(21, 31),
-			Diagnostic().WithLocation(23, 13),
-			Diagnostic().WithLocation(24, 32),
+			ExpectDiagnostic().WithLocation(20, 13),
+			ExpectDiagnostic().WithLocation(21, 31),
+			ExpectDiagnostic().WithLocation(23, 13),
+			ExpectDiagnostic().WithLocation(24, 32),
 
 			// Invalid indexer #3
-			Diagnostic().WithLocation(30, 13),
-			Diagnostic().WithLocation(33, 13),
+			ExpectDiagnostic().WithLocation(30, 13),
+			ExpectDiagnostic().WithLocation(33, 13),
 
 			// Invalid indexer #4
-			Diagnostic().WithLocation(42, 31),
-			Diagnostic().WithLocation(46, 32),
+			ExpectDiagnostic().WithLocation(42, 31),
+			ExpectDiagnostic().WithLocation(46, 32),
 
 			// Invalid indexer #5
-			Diagnostic().WithLocation(53, 9),
-			Diagnostic().WithLocation(57, 9),
+			ExpectDiagnostic().WithLocation(53, 9),
+			ExpectDiagnostic().WithLocation(57, 9),
 
 			// Invalid indexer #6 (Only report once for accessor statements on a single line)
-			Diagnostic().WithLocation(65, 9),
-			Diagnostic().WithLocation(68, 9),
+			ExpectDiagnostic().WithLocation(65, 9),
+			ExpectDiagnostic().WithLocation(68, 9),
 
 			// Invalid indexer #7
-			Diagnostic().WithLocation(72, 34),
+			ExpectDiagnostic().WithLocation(72, 34),
 
 			// Invalid indexer #8
-			Diagnostic().WithLocation(77, 35),
-			Diagnostic().WithLocation(78, 35),
+			ExpectDiagnostic().WithLocation(77, 35),
+			ExpectDiagnostic().WithLocation(78, 35),
 
 			// Invalid indexer #9
-			Diagnostic().WithLocation(81, 34),
+			ExpectDiagnostic().WithLocation(81, 34),
 
 			// Invalid indexer #10
-			Diagnostic().WithLocation(87, 35),
+			ExpectDiagnostic().WithLocation(87, 35),
 
 			// Invalid indexer #11
-			Diagnostic().WithLocation(91, 5),
+			ExpectDiagnostic().WithLocation(91, 5),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -2800,10 +2754,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid interfaces defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestInterfaceValidAsync()
@@ -2819,11 +2769,11 @@ public class Foo
         void Bar();
     }
 
-    public interface ValidInterface3 { } /* Valid only for SA1500 */
+    public interface ValidInterface3 { }
 
-    public interface ValidInterface4 { void Bar(); }  /* Valid only for SA1500 */
+    public interface ValidInterface4 { void Bar(); }
 
-    public interface ValidInterface5 /* Valid only for SA1500 */
+    public interface ValidInterface5
     { void Bar(); }  
 }";
 
@@ -2833,9 +2783,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that diagnostics will be reported for all invalid interface definitions.
 	/// </summary>
-	/// <remarks>
-	/// <para>These will normally also report SA1401, but not in the unit test.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestInterfaceInvalidAsync()
@@ -2899,23 +2846,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// InvalidInterface1
-			Diagnostic().WithLocation(3, 40),
+			ExpectDiagnostic().WithLocation(3, 40),
 
 			// InvalidInterface2
-			Diagnostic().WithLocation(6, 40),
+			ExpectDiagnostic().WithLocation(6, 40),
 
 			// InvalidInterface3
-			Diagnostic().WithLocation(10, 40),
-			Diagnostic().WithLocation(11, 21),
+			ExpectDiagnostic().WithLocation(10, 40),
+			ExpectDiagnostic().WithLocation(11, 21),
 
 			// InvalidInterface4
-			Diagnostic().WithLocation(13, 40),
+			ExpectDiagnostic().WithLocation(13, 40),
 
 			// InvalidInterface5
-			Diagnostic().WithLocation(18, 21),
+			ExpectDiagnostic().WithLocation(18, 21),
 
 			// InvalidInterface6
-			Diagnostic().WithLocation(21, 5),
+			ExpectDiagnostic().WithLocation(21, 5),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -2927,10 +2874,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid lambda expressions defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestLambdaExpressionValidAsync()
@@ -3151,42 +3094,42 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid lambda expression #1
-			Diagnostic().WithLocation(12, 30),
+			ExpectDiagnostic().WithLocation(12, 30),
 
 			// Invalid lambda expression #2
-			Diagnostic().WithLocation(16, 30),
+			ExpectDiagnostic().WithLocation(16, 30),
 
 			// Invalid lambda expression #3
-			Diagnostic().WithLocation(21, 30),
-			Diagnostic().WithLocation(22, 29),
+			ExpectDiagnostic().WithLocation(21, 30),
+			ExpectDiagnostic().WithLocation(22, 29),
 
 			// Invalid lambda expression #4
-			Diagnostic().WithLocation(25, 30),
+			ExpectDiagnostic().WithLocation(25, 30),
 
 			// Invalid lambda expression #5
-			Diagnostic().WithLocation(31, 29),
+			ExpectDiagnostic().WithLocation(31, 29),
 
 			// Invalid lambda expression #6
-			Diagnostic().WithLocation(35, 9),
+			ExpectDiagnostic().WithLocation(35, 9),
 
 			// Invalid lambda expression #7
-			Diagnostic().WithLocation(39, 31),
+			ExpectDiagnostic().WithLocation(39, 31),
 
 			// Invalid lambda expression #8
-			Diagnostic().WithLocation(43, 31),
+			ExpectDiagnostic().WithLocation(43, 31),
 
 			// Invalid lambda expression #9
-			Diagnostic().WithLocation(48, 31),
-			Diagnostic().WithLocation(49, 29),
+			ExpectDiagnostic().WithLocation(48, 31),
+			ExpectDiagnostic().WithLocation(49, 29),
 
 			// Invalid lambda expression #10
-			Diagnostic().WithLocation(52, 31),
+			ExpectDiagnostic().WithLocation(52, 31),
 
 			// Invalid lambda expression #11
-			Diagnostic().WithLocation(58, 29),
+			ExpectDiagnostic().WithLocation(58, 29),
 
 			// Invalid lambda expression #12
-			Diagnostic().WithLocation(62, 9),
+			ExpectDiagnostic().WithLocation(62, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -3198,10 +3141,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid methods defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestMethodValidAsync()
@@ -3221,13 +3160,13 @@ public class Foo
         Debug.Indent();
     }
 
-    // Valid method #3 (Valid only for SA1500)
+    // Valid method #3
     public void Method3() { }
 
-    // Valid method #4 (Valid only for SA1500)
+    // Valid method #4
     public void Method4() { Debug.Indent(); }
 
-    // Valid method #5 (Valid only for SA1500)
+    // Valid method #5
     public void Method5() 
     { Debug.Indent(); }
 }";
@@ -3317,23 +3256,23 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid method #1
-			Diagnostic().WithLocation(6, 27),
+			ExpectDiagnostic().WithLocation(6, 27),
 
 			// Invalid method #2
-			Diagnostic().WithLocation(10, 27),
+			ExpectDiagnostic().WithLocation(10, 27),
 
 			// Invalid method #3
-			Diagnostic().WithLocation(15, 27),
-			Diagnostic().WithLocation(16, 25),
+			ExpectDiagnostic().WithLocation(15, 27),
+			ExpectDiagnostic().WithLocation(16, 25),
 
 			// Invalid method #4
-			Diagnostic().WithLocation(19, 27),
+			ExpectDiagnostic().WithLocation(19, 27),
 
 			// Invalid method #5
-			Diagnostic().WithLocation(25, 25),
+			ExpectDiagnostic().WithLocation(25, 25),
 
 			// Invalid method #6
-			Diagnostic().WithLocation(29, 5),
+			ExpectDiagnostic().WithLocation(29, 5),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -3345,9 +3284,6 @@ public class Foo
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid namespace defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestNamespaceValidAsync()
@@ -3361,11 +3297,11 @@ namespace ValidNamespace2
     using System;
 }
 
-namespace ValidNamespace3 { } /* Valid only for SA1500 */
+namespace ValidNamespace3 { }
 
-namespace ValidNamespace4 { using System; }  /* Valid only for SA1500 */
+namespace ValidNamespace4 { using System; }
 
-namespace ValidNamespace5 /* Valid only for SA1500 */
+namespace ValidNamespace5
 { using System; }  
 ";
 
@@ -3434,23 +3370,23 @@ namespace InvalidNamespace6
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// InvalidNamespace1
-			Diagnostic().WithLocation(1, 29),
+			ExpectDiagnostic().WithLocation(1, 29),
 
 			// InvalidNamespace2
-			Diagnostic().WithLocation(4, 29),
+			ExpectDiagnostic().WithLocation(4, 29),
 
 			// InvalidNamespace3
-			Diagnostic().WithLocation(8, 29),
-			Diagnostic().WithLocation(9, 19),
+			ExpectDiagnostic().WithLocation(8, 29),
+			ExpectDiagnostic().WithLocation(9, 19),
 
 			// InvalidNamespace4
-			Diagnostic().WithLocation(11, 29),
+			ExpectDiagnostic().WithLocation(11, 29),
 
 			// InvalidNamespace5
-			Diagnostic().WithLocation(16, 19),
+			ExpectDiagnostic().WithLocation(16, 19),
 
 			// InvalidNamespace6
-			Diagnostic().WithLocation(19, 1),
+			ExpectDiagnostic().WithLocation(19, 1),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -3476,7 +3412,7 @@ namespace TestNamespace
 
 		DiagnosticResult[] expectedDiagnostics =
 		{
-			Diagnostic().WithLocation(4, 17),
+			ExpectDiagnostic().WithLocation(4, 17),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -3488,9 +3424,6 @@ namespace TestNamespace
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid object initializers defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestObjectInitializersValidAsync()
@@ -3855,46 +3788,46 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid object initializer #1
-			Diagnostic().WithLocation(14, 32),
-			Diagnostic().WithLocation(14, 34),
-			Diagnostic().WithLocation(14, 36),
+			ExpectDiagnostic().WithLocation(14, 32),
+			ExpectDiagnostic().WithLocation(14, 34),
+			ExpectDiagnostic().WithLocation(14, 36),
 
 			// Invalid object initializer #2
-			Diagnostic().WithLocation(18, 5),
-			Diagnostic().WithLocation(19, 9),
-			Diagnostic().WithLocation(21, 13),
+			ExpectDiagnostic().WithLocation(18, 5),
+			ExpectDiagnostic().WithLocation(19, 9),
+			ExpectDiagnostic().WithLocation(21, 13),
 
 			// Invalid object initializer #3
-			Diagnostic().WithLocation(28, 41),
-			Diagnostic().WithLocation(29, 21),
-			Diagnostic().WithLocation(31, 28),
+			ExpectDiagnostic().WithLocation(28, 41),
+			ExpectDiagnostic().WithLocation(29, 21),
+			ExpectDiagnostic().WithLocation(31, 28),
 
 			// Invalid object initializer #4
-			Diagnostic().WithLocation(49, 36),
-			Diagnostic().WithLocation(49, 38),
-			Diagnostic().WithLocation(49, 40),
+			ExpectDiagnostic().WithLocation(49, 36),
+			ExpectDiagnostic().WithLocation(49, 38),
+			ExpectDiagnostic().WithLocation(49, 40),
 
 			// Invalid object initializer #5
-			Diagnostic().WithLocation(53, 9),
-			Diagnostic().WithLocation(54, 13),
-			Diagnostic().WithLocation(56, 17),
+			ExpectDiagnostic().WithLocation(53, 9),
+			ExpectDiagnostic().WithLocation(54, 13),
+			ExpectDiagnostic().WithLocation(56, 17),
 
 			// Invalid object initializer #6
-			Diagnostic().WithLocation(63, 31),
-			Diagnostic().WithLocation(64, 25),
-			Diagnostic().WithLocation(66, 32),
+			ExpectDiagnostic().WithLocation(63, 31),
+			ExpectDiagnostic().WithLocation(64, 25),
+			ExpectDiagnostic().WithLocation(66, 32),
 
 			// Invalid object initializer #7
-			Diagnostic().WithLocation(79, 32),
-			Diagnostic().WithLocation(79, 34),
+			ExpectDiagnostic().WithLocation(79, 32),
+			ExpectDiagnostic().WithLocation(79, 34),
 
 			// Invalid object initializer #8
-			Diagnostic().WithLocation(83, 9),
-			Diagnostic().WithLocation(85, 13),
+			ExpectDiagnostic().WithLocation(83, 9),
+			ExpectDiagnostic().WithLocation(85, 13),
 
 			// Invalid object initializer #9
-			Diagnostic().WithLocation(90, 29),
-			Diagnostic().WithLocation(92, 34),
+			ExpectDiagnostic().WithLocation(90, 29),
+			ExpectDiagnostic().WithLocation(92, 34),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -3954,14 +3887,14 @@ public class TestClass
 		DiagnosticResult[] expected =
 		{
 			// Invalid object initializer #1
-			Diagnostic().WithLocation(6, 67),
+			ExpectDiagnostic().WithLocation(6, 67),
 
 			// Invalid object initializer #2
-			Diagnostic().WithLocation(13, 18),
+			ExpectDiagnostic().WithLocation(13, 18),
 
 			// Invalid object initializer #3
-			Diagnostic().WithLocation(16, 67),
-			Diagnostic().WithLocation(17, 18),
+			ExpectDiagnostic().WithLocation(16, 67),
+			ExpectDiagnostic().WithLocation(17, 18),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
@@ -3973,9 +3906,6 @@ public class TestClass
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid properties defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestPropertyValidAsync()
@@ -4008,7 +3938,7 @@ public class Foo
         }
     }
 
-    // Valid property #3  (Valid for SA1500 only)
+    // Valid property #3
     public bool Property3
     {
         get { return this.test; }
@@ -4018,7 +3948,7 @@ public class Foo
         }
     }
 
-    // Valid property #4  (Valid for SA1500 only)
+    // Valid property #4
     public bool Property4
     {
         get 
@@ -4029,10 +3959,10 @@ public class Foo
         set { }
     }
 
-    // Valid property #5  (Valid for SA1500 only)
+    // Valid property #5
     public bool Property5 { get { return this.test; } }
 
-    // Valid property #6  (Valid for SA1500 only)
+    // Valid property #6
     public bool Property6 
     { get { return this.test; } }
 
@@ -4044,7 +3974,7 @@ public class Foo
         2 
     };
 
-    // Valid property #8  (Valid for SA1500 only)
+    // Valid property #8
     public int[] Property8 { get; set; } = { 0, 1, 2 };
 }";
 
@@ -4322,59 +4252,59 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid property #1
-			Diagnostic().WithLocation(10, 13),
-			Diagnostic().WithLocation(14, 13),
+			ExpectDiagnostic().WithLocation(10, 13),
+			ExpectDiagnostic().WithLocation(14, 13),
 
 			// Invalid property #2
-			Diagnostic().WithLocation(22, 13),
-			Diagnostic().WithLocation(23, 31),
-			Diagnostic().WithLocation(25, 13),
-			Diagnostic().WithLocation(26, 32),
+			ExpectDiagnostic().WithLocation(22, 13),
+			ExpectDiagnostic().WithLocation(23, 31),
+			ExpectDiagnostic().WithLocation(25, 13),
+			ExpectDiagnostic().WithLocation(26, 32),
 
 			// Invalid property #3
-			Diagnostic().WithLocation(32, 13),
-			Diagnostic().WithLocation(35, 13),
+			ExpectDiagnostic().WithLocation(32, 13),
+			ExpectDiagnostic().WithLocation(35, 13),
 
 			// Invalid property #4
-			Diagnostic().WithLocation(44, 31),
-			Diagnostic().WithLocation(48, 32),
+			ExpectDiagnostic().WithLocation(44, 31),
+			ExpectDiagnostic().WithLocation(48, 32),
 
 			// Invalid property #5
-			Diagnostic().WithLocation(55, 9),
-			Diagnostic().WithLocation(59, 9),
+			ExpectDiagnostic().WithLocation(55, 9),
+			ExpectDiagnostic().WithLocation(59, 9),
 
 			// Invalid property #6 (Only report once for accessor statements on a single line)
-			Diagnostic().WithLocation(67, 9),
-			Diagnostic().WithLocation(70, 9),
+			ExpectDiagnostic().WithLocation(67, 9),
+			ExpectDiagnostic().WithLocation(70, 9),
 
 			// Invalid property #7
-			Diagnostic().WithLocation(76, 35),
+			ExpectDiagnostic().WithLocation(76, 35),
 
 			// Invalid property #8
-			Diagnostic().WithLocation(79, 27),
+			ExpectDiagnostic().WithLocation(79, 27),
 
 			// Invalid property #9
-			Diagnostic().WithLocation(84, 27),
-			Diagnostic().WithLocation(85, 35),
+			ExpectDiagnostic().WithLocation(84, 27),
+			ExpectDiagnostic().WithLocation(85, 35),
 
 			// Invalid property #10
-			Diagnostic().WithLocation(88, 28),
+			ExpectDiagnostic().WithLocation(88, 28),
 
 			// Invalid property #11
-			Diagnostic().WithLocation(93, 5),
+			ExpectDiagnostic().WithLocation(93, 5),
 
 			// Invalid property #12
-			Diagnostic().WithLocation(101, 11),
+			ExpectDiagnostic().WithLocation(101, 11),
 
 			// Invalid property #13
-			Diagnostic().WithLocation(104, 45),
+			ExpectDiagnostic().WithLocation(104, 45),
 
 			// Invalid property #14
-			Diagnostic().WithLocation(111, 45),
+			ExpectDiagnostic().WithLocation(111, 45),
 
 			// Invalid property #15
-			Diagnostic().WithLocation(116, 5),
-			Diagnostic().WithLocation(116, 15),
+			ExpectDiagnostic().WithLocation(116, 5),
+			ExpectDiagnostic().WithLocation(116, 15),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -4416,9 +4346,9 @@ public class TestClass
 
 		DiagnosticResult[] expected =
 		{
-				Diagnostic().WithLocation(6, 13),
-				Diagnostic().WithLocation(8, 43),
-				Diagnostic().WithLocation(8, 45),
+				ExpectDiagnostic().WithLocation(6, 13),
+				ExpectDiagnostic().WithLocation(8, 43),
+				ExpectDiagnostic().WithLocation(8, 45),
 			};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);
@@ -4503,9 +4433,7 @@ class ClassName
 	/// Verifies that no diagnostics are reported for the valid statements defined in this test.
 	/// </summary>
 	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics outside of the unit test scenario.
-	///
-	/// The class is marked unsafe to make testing the fixed statement possible.</para>
+	/// <para>The class is marked unsafe to make testing the fixed statement possible.</para>
 	/// </remarks>
 	/// <param name="token">The source code preceding the opening <c>{</c> of a statement block.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
@@ -4530,13 +4458,13 @@ class ClassName
             this.X = 1;
         }
 
-        // valid #3 (valid only for SA1500)
+        // valid #3
         #TOKEN# { }
 
-        // valid #4 (valid only for SA1500)
+        // valid #4
         #TOKEN# { this.X = 1; }
 
-        // valid #5 (valid only for SA1500)
+        // valid #5
         #TOKEN# 
         { this.X = 1; }
     }
@@ -4635,20 +4563,20 @@ class ClassName
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// invalid #1
-			Diagnostic().WithLocation(8, 10 + tokenLength),
+			ExpectDiagnostic().WithLocation(8, 10 + tokenLength),
 
 			// invalid #2
-			Diagnostic().WithLocation(13, 10 + tokenLength),
-			Diagnostic().WithLocation(14, 25),
+			ExpectDiagnostic().WithLocation(13, 10 + tokenLength),
+			ExpectDiagnostic().WithLocation(14, 25),
 
 			// invalid #3
-			Diagnostic().WithLocation(17, 10 + tokenLength),
+			ExpectDiagnostic().WithLocation(17, 10 + tokenLength),
 
 			// invalid #4
-			Diagnostic().WithLocation(23, 25),
+			ExpectDiagnostic().WithLocation(23, 25),
 
 			// invalid #5
-			Diagnostic().WithLocation(27, 9),
+			ExpectDiagnostic().WithLocation(27, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -4660,10 +4588,6 @@ class ClassName
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid switch statements defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics outside of the unit test
-	/// scenario.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestSwitchValidAsync()
@@ -4681,10 +4605,10 @@ class ClassName
                 break;
         }
 
-        // valid switch #2 (valid only for SA1500)
+        // valid switch #2
         switch (this.X) { case 0: break; }
 
-        // valid switch #3 (valid only for SA1500)
+        // valid switch #3
         switch (this.X) 
         { case 0: break; }
     }
@@ -4782,20 +4706,20 @@ class ClassName
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// invalid switch #1
-			Diagnostic().WithLocation(8, 25),
+			ExpectDiagnostic().WithLocation(8, 25),
 
 			// invalid switch #2
-			Diagnostic().WithLocation(14, 25),
-			Diagnostic().WithLocation(16, 24),
+			ExpectDiagnostic().WithLocation(14, 25),
+			ExpectDiagnostic().WithLocation(16, 24),
 
 			// invalid switch #3
-			Diagnostic().WithLocation(19, 25),
+			ExpectDiagnostic().WithLocation(19, 25),
 
 			// invalid switch #4
-			Diagnostic().WithLocation(27, 24),
+			ExpectDiagnostic().WithLocation(27, 24),
 
 			// invalid switch #5
-			Diagnostic().WithLocation(31, 9),
+			ExpectDiagnostic().WithLocation(31, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
@@ -4807,10 +4731,6 @@ class ClassName
 	/// <summary>
 	/// Verifies that no diagnostics are reported for the valid try ... catch ... finally statements defined in this test.
 	/// </summary>
-	/// <remarks>
-	/// <para>These are valid for SA1500 only, some will report other diagnostics from the layout (SA15xx)
-	/// series.</para>
-	/// </remarks>
 	/// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
 	[Fact]
 	public async Task TestTryCatchFinallyValidAsync()
@@ -4848,25 +4768,25 @@ public class Foo
             x += 3;
         }
 
-        // Valid try ... catch ... finally #3 (Valid only for SA1500)
+        // Valid try ... catch ... finally #3
         try { } catch (Exception) { }
 
-        // Valid try ... catch ... finally #4 (Valid only for SA1500)
+        // Valid try ... catch ... finally #4
         try { x += 1; } catch (Exception) { x += 2; }
 
-        // Valid try ... catch ... finally #5 (Valid only for SA1500)
+        // Valid try ... catch ... finally #5
         try { } finally { }
 
-        // Valid try ... catch ... finally #6 (Valid only for SA1500)
+        // Valid try ... catch ... finally #6
         try { x += 1; } finally { x += 3; }
 
-        // Valid try ... catch ... finally #7 (Valid only for SA1500)
+        // Valid try ... catch ... finally #7
         try { x += 1; } catch (Exception) { x += 2; } finally { x += 3; }
 
-        // Valid try ... catch ... finally #8 (Valid only for SA1500)
+        // Valid try ... catch ... finally #8
         try { x += 1; } catch (Exception) { x += 2; } finally { x += 3; }
 
-        // Valid try ... catch ... finally #9 (Valid only for SA1500)
+        // Valid try ... catch ... finally #9
         try 
         { x += 1; } 
         catch (Exception) 
@@ -4913,7 +4833,7 @@ public class Foo
             x += 3;
         }
 
-        // Invalid try ... catch ... finally #3 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #3
         try {
             x += 1; }
         catch (Exception) {
@@ -4929,7 +4849,7 @@ public class Foo
         finally { x += 3;
         }
 
-        // Invalid try ... catch ... finally #5 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #5
         try
         {
             x += 1; }
@@ -4940,7 +4860,7 @@ public class Foo
         {
             x += 3; }
 
-        // Invalid try ... catch ... finally #6 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #6
         try
         { x += 1;
         }
@@ -4986,7 +4906,7 @@ public class Foo
             x += 3;
         }
 
-        // Invalid try ... catch ... finally #3 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #3
         try
         {
             x += 1;
@@ -5014,7 +4934,7 @@ public class Foo
             x += 3;
         }
 
-        // Invalid try ... catch ... finally #5 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #5
         try
         {
             x += 1;
@@ -5028,7 +4948,7 @@ public class Foo
             x += 3;
         }
 
-        // Invalid try ... catch ... finally #6 (Valid only for SA1500)
+        // Invalid try ... catch ... finally #6
         try
         {
             x += 1;
@@ -5047,37 +4967,37 @@ public class Foo
 		DiagnosticResult[] expectedDiagnostics =
 		{
 			// Invalid try ... catch ... finally #1
-			Diagnostic().WithLocation(10, 13),
-			Diagnostic().WithLocation(12, 27),
-			Diagnostic().WithLocation(14, 17),
+			ExpectDiagnostic().WithLocation(10, 13),
+			ExpectDiagnostic().WithLocation(12, 27),
+			ExpectDiagnostic().WithLocation(14, 17),
 
 			// Invalid try ... catch ... finally #2
-			Diagnostic().WithLocation(18, 13),
-			Diagnostic().WithLocation(21, 27),
-			Diagnostic().WithLocation(24, 17),
+			ExpectDiagnostic().WithLocation(18, 13),
+			ExpectDiagnostic().WithLocation(21, 27),
+			ExpectDiagnostic().WithLocation(24, 17),
 
 			// Invalid try ... catch ... finally #3
-			Diagnostic().WithLocation(29, 13),
-			Diagnostic().WithLocation(30, 21),
-			Diagnostic().WithLocation(31, 27),
-			Diagnostic().WithLocation(32, 21),
-			Diagnostic().WithLocation(33, 17),
-			Diagnostic().WithLocation(34, 21),
+			ExpectDiagnostic().WithLocation(29, 13),
+			ExpectDiagnostic().WithLocation(30, 21),
+			ExpectDiagnostic().WithLocation(31, 27),
+			ExpectDiagnostic().WithLocation(32, 21),
+			ExpectDiagnostic().WithLocation(33, 17),
+			ExpectDiagnostic().WithLocation(34, 21),
 
 			// Invalid try ... catch ... finally #4
-			Diagnostic().WithLocation(37, 13),
-			Diagnostic().WithLocation(39, 27),
-			Diagnostic().WithLocation(41, 17),
+			ExpectDiagnostic().WithLocation(37, 13),
+			ExpectDiagnostic().WithLocation(39, 27),
+			ExpectDiagnostic().WithLocation(41, 17),
 
 			// Invalid try ... catch ... finally #5
-			Diagnostic().WithLocation(47, 21),
-			Diagnostic().WithLocation(50, 21),
-			Diagnostic().WithLocation(53, 21),
+			ExpectDiagnostic().WithLocation(47, 21),
+			ExpectDiagnostic().WithLocation(50, 21),
+			ExpectDiagnostic().WithLocation(53, 21),
 
 			// Invalid try ... catch ... finally #6
-			Diagnostic().WithLocation(57, 9),
-			Diagnostic().WithLocation(60, 9),
-			Diagnostic().WithLocation(63, 9),
+			ExpectDiagnostic().WithLocation(57, 9),
+			ExpectDiagnostic().WithLocation(60, 9),
+			ExpectDiagnostic().WithLocation(63, 9),
 		};
 
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expectedDiagnostics, fixedTestCode);
