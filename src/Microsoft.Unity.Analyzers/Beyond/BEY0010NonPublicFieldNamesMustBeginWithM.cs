@@ -138,8 +138,8 @@ public class BEY0010NonPublicFieldNamesMustBeginWithMCodeFix : CodeFixProvider
 		var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 		var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
 
-		string baseName = RenameHelper.MakeFirstNotUnderscoreLower(
-			RenameHelper.AppendPrefixLetterWithUnderscore(token.ValueText, 'm'), 2 /* skip leading "m_" */);
+		string baseName = StringHelper.MakeFirstNotUnderscoreLower(
+			StringHelper.AppendPrefixLetterWithUnderscore(token.ValueText, 'm'), 2 /* skip leading "m_" */);
 		var index = 0;
 		var newName = baseName;
 

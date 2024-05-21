@@ -71,7 +71,7 @@ public class BEY0007InterfaceNamesMustBeginWithIAnalyzer : DiagnosticAnalyzer
 		string name = interfaceDeclaration.Identifier.ValueText;
 		if (name != null && !name.StartsWith("I", StringComparison.Ordinal))
 		{
-			context.ReportDiagnostic(Diagnostic.Create(Rule, interfaceDeclaration.Identifier.GetLocation()));
+			context.ReportDiagnostic(Diagnostic.Create(Rule, interfaceDeclaration.Identifier.GetLocation(), name));
 		}
 	}
 }

@@ -147,6 +147,13 @@ public class BEY0005ElementMustNamedUpperPascalCaseAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
+		if (StringHelper.StartsWithIgnorePrefixUnderscore(
+			methodDeclaration.Identifier.ValueText, BeyondSettings.AllowedMethodPrefixes))
+		{
+			// If prefix exists in BeyondSettings.AllowedMethodPrefixes, don't analyze.
+			return;
+		}
+
 		CheckElementNameToken(context, methodDeclaration.Identifier);
 	}
 

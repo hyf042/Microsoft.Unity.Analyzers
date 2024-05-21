@@ -205,7 +205,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element should be named with lowerCamelCase style.
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with lowerCamelCase style.
         /// </summary>
         internal static string BEY0004ElementMustNamedLowerCamelCaseDiagnosticMessageFormat {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with lowerCamelCase style.
+        ///   Looks up a localized string similar to Element should be named with lowerCamelCase style.
         /// </summary>
         internal static string BEY0004ElementMustNamedLowerCamelCaseDiagnosticTitle {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element should be named with UpperPascalCase style.
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with UpperPascalCase style.
         /// </summary>
         internal static string BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat {
             get {
@@ -241,7 +241,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with UpperPascalCase style.
+        ///   Looks up a localized string similar to Element should be named with UpperPascalCase style.
         /// </summary>
         internal static string BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle {
             get {
@@ -259,7 +259,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element should be named with ALL_CAPS style.
+        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with ALL_CAPS style.
         /// </summary>
         internal static string BEY0006ElementMustNamedAllCapsDiagnosticMessageFormat {
             get {
@@ -268,7 +268,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Element &apos;{0}&apos; should be named with ALL_CAPS style.
+        ///   Looks up a localized string similar to Element should be named with ALL_CAPS style.
         /// </summary>
         internal static string BEY0006ElementMustNamedAllCapsDiagnosticTitle {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interface names should begin with I.
+        ///   Looks up a localized string similar to Interface &apos;{0}&apos; names should begin with I.
         /// </summary>
         internal static string BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat {
             get {
@@ -295,7 +295,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interface &apos;{0}&apos; names should begin with I.
+        ///   Looks up a localized string similar to Interface names should begin with I.
         /// </summary>
         internal static string BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private method should be named with _UpperPascalCase with prefix &apos;_&apos;.
+        ///   Looks up a localized string similar to Private method &apos;{0}&apos; should be named with _UpperPascalCase (with prefix &apos;_&apos;).
         /// </summary>
         internal static string BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
             get {
@@ -322,7 +322,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private method &apos;{0}&apos; should be named with _UpperPascalCase with prefix &apos;_&apos;.
+        ///   Looks up a localized string similar to Private method should be named with _UpperPascalCase (with prefix &apos;_&apos;).
         /// </summary>
         internal static string BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name of a static field does not begin with &apos;s_&apos;..
+        ///   Looks up a localized string similar to The name of a non-public static field does not begin with &apos;s_&apos;..
         /// </summary>
         internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription {
             get {
@@ -340,7 +340,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Static field name should begin with &apos;s_&apos;.
+        ///   Looks up a localized string similar to Non-public static field &apos;{0}&apos; names should begin with &apos;s_&apos;.
         /// </summary>
         internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat {
             get {
@@ -349,7 +349,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Static field &apos;{0}&apos; names should begin with &apos;s_&apos;.
+        ///   Looks up a localized string similar to Non-public static field name should begin with &apos;s_&apos;.
         /// </summary>
         internal static string BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle {
             get {
@@ -367,7 +367,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Non-public field names should begin with &apos;m_&apos;.
+        ///   Looks up a localized string similar to Non-public field &apos;{0}&apos; names should begin with &apos;m_&apos;.
         /// </summary>
         internal static string BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticMessageFormat {
             get {
@@ -376,7 +376,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Non-public field &apos;{0}&apos; names should begin with &apos;m_&apos;.
+        ///   Looks up a localized string similar to Non-public field names should begin with &apos;m_&apos;.
         /// </summary>
         internal static string BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle {
             get {
@@ -395,7 +395,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Non-public unity [SerializeField] should begin with &apos;_&apos;.
+        ///   Looks up a localized string similar to Non-public unity [SerializeField] &apos;{0}&apos; should begin with &apos;_&apos;.
         /// </summary>
         internal static string BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticMessageFormat {
             get {
@@ -405,7 +405,7 @@ namespace Microsoft.Unity.Analyzers.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Non-public unity [SerializeField] &apos;{0}&apos; should begin with &apos;_&apos;.
+        ///   Looks up a localized string similar to Non-public unity [SerializeField] should begin with &apos;_&apos;.
         /// </summary>
         internal static string BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle {
             get {

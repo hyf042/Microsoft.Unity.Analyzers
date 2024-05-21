@@ -124,8 +124,8 @@ public class BEY0009StaticFieldNamesMustBeginWithSCodeFix : CodeFixProvider
 		var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 		var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
 
-		string baseName = RenameHelper.MakeFirstNotUnderscoreLower(
-			RenameHelper.AppendPrefixLetterWithUnderscore(token.ValueText, 's'), 2 /* skip leading "s_" */);
+		string baseName = StringHelper.MakeFirstNotUnderscoreLower(
+			StringHelper.AppendPrefixLetterWithUnderscore(token.ValueText, 's'), 2 /* skip leading "s_" */);
 		var index = 0;
 		var newName = baseName;
 

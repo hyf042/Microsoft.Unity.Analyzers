@@ -223,7 +223,7 @@ static readonly float EAR = default, FAR = default;
 
 		DiagnosticResult[] expected =
 		{
-			ExpectDiagnostic().WithArguments("Test").WithLocation(3, 25),
+			ExpectDiagnostic().WithArguments("test").WithLocation(3, 25),
 			ExpectDiagnostic().WithArguments("Test").WithLocation(4, 35),
 		};
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedTestCode);

@@ -657,72 +657,72 @@
     <value>The name of a C# element does not use UpperPascalCase style.</value>
   </data>
   <data name="BEY0005ElementMustNamedUpperPascalCaseDiagnosticMessageFormat" xml:space="preserve">
-    <value>Element should be named with UpperPascalCase style</value>
+    <value>Element '{0}' should be named with UpperPascalCase style</value>
   </data>
   <data name="BEY0005ElementMustNamedUpperPascalCaseDiagnosticTitle" xml:space="preserve">
-    <value>Element '{0}' should be named with UpperPascalCase style</value>
+    <value>Element should be named with UpperPascalCase style</value>
   </data>
   <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticDescription" xml:space="preserve">
     <value>The name of a C# element does not use lowerCamelCase style.</value>
   </data>
   <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticMessageFormat" xml:space="preserve">
-    <value>Element should be named with lowerCamelCase style</value>
+    <value>Element '{0}' should be named with lowerCamelCase style</value>
   </data>
   <data name="BEY0004ElementMustNamedLowerCamelCaseDiagnosticTitle" xml:space="preserve">
-    <value>Element '{0}' should be named with lowerCamelCase style</value>
+    <value>Element should be named with lowerCamelCase style</value>
   </data>
   <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticDescription" xml:space="preserve">
     <value>The name of a C# interface does not begin with the capital letter I.</value>
   </data>
   <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticMessageFormat" xml:space="preserve">
-    <value>Interface names should begin with I</value>
+    <value>Interface '{0}' names should begin with I</value>
   </data>
   <data name="BEY0007InterfaceNamesMustBeginWithIDiagnosticTitle" xml:space="preserve">
-    <value>Interface '{0}' names should begin with I</value>
+    <value>Interface names should begin with I</value>
   </data>
   <data name="BEY0006ElementMustNamedAllCapsDiagnosticDescription" xml:space="preserve">
     <value>The name of a C# element does not use ALL_CAPS style.</value>
   </data>
   <data name="BEY0006ElementMustNamedAllCapsDiagnosticMessageFormat" xml:space="preserve">
-    <value>Element should be named with ALL_CAPS style</value>
+    <value>Element '{0}' should be named with ALL_CAPS style</value>
   </data>
   <data name="BEY0006ElementMustNamedAllCapsDiagnosticTitle" xml:space="preserve">
-    <value>Element '{0}' should be named with ALL_CAPS style</value>
+    <value>Element should be named with ALL_CAPS style</value>
   </data>
   <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
     <value>The name of a private method does not begin with the '_' or use _UpperPascalCase style.</value>
   </data>
   <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
-    <value>Private method should be named with _UpperPascalCase with prefix '_'</value>
+    <value>Private method '{0}' should be named with _UpperPascalCase (with prefix '_')</value>
   </data>
   <data name="BEY0008PrivateMethodNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
-    <value>Private method '{0}' should be named with _UpperPascalCase with prefix '_'</value>
+    <value>Private method should be named with _UpperPascalCase (with prefix '_')</value>
   </data>
   <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticDescription" xml:space="preserve">
     <value>The name of a non-public field does not begin with 'm_'.</value>
   </data>
   <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticMessageFormat" xml:space="preserve">
-    <value>Non-public field names should begin with 'm_'</value>
-  </data>
-  <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle" xml:space="preserve">
     <value>Non-public field '{0}' names should begin with 'm_'</value>
   </data>
+  <data name="BEY0010NonPublicFieldNamesMustBeginWithMDiagnosticTitle" xml:space="preserve">
+    <value>Non-public field names should begin with 'm_'</value>
+  </data>
   <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticDescription" xml:space="preserve">
-    <value>The name of a static field does not begin with 's_'.</value>
+    <value>The name of a non-public static field does not begin with 's_'.</value>
   </data>
   <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticMessageFormat" xml:space="preserve">
-    <value>Static field name should begin with 's_'</value>
+    <value>Non-public static field '{0}' names should begin with 's_'</value>
   </data>
   <data name="BEY0009StaticFieldNamesMustBeginWithSDiagnosticTitle" xml:space="preserve">
-    <value>Static field '{0}' names should begin with 's_'</value>
+    <value>Non-public static field name should begin with 's_'</value>
   </data>
   <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticDescription" xml:space="preserve">
     <value>The name of a non-public unity [SerializeField] should begin with '_'.</value>
   </data>
   <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticMessageFormat" xml:space="preserve">
-    <value>Non-public unity [SerializeField] should begin with '_'</value>
+    <value>Non-public unity [SerializeField] '{0}' should begin with '_'</value>
   </data>
   <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
-    <value>Non-public unity [SerializeField] '{0}' should begin with '_'</value>
+    <value>Non-public unity [SerializeField] should begin with '_'</value>
   </data>
 </root>

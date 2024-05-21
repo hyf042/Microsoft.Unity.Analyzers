@@ -59,6 +59,22 @@ string Bar = """", car = """", Dar = """";
 		await VerifyCSharpDiagnosticAsync(string.Format(testCode, modifiers));
 	}
 
+	[Theory]
+	[InlineData("public")]
+	[InlineData("public readonly")]
+	[InlineData("internal")]
+	[InlineData("internal readonly")]
+	public async Task TestThatDiagnosticIsReported_AllowedVariablePrefixesAsync(string modifiers)
+	{
+		var testCode = @"public class Foo
+{{
+{0}
+string UI = """", _UI = """", __UI = """";
+}}";
+
+		await VerifyCSharpDiagnosticAsync(string.Format(testCode, modifiers));
+	}
+
 	[Fact]
 	public async Task TestThatDiagnosticIsNotReported_EventAsync()
 	{

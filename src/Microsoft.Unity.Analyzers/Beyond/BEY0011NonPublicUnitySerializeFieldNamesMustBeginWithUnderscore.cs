@@ -138,8 +138,8 @@ public class BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreCode
 		var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
 		var token = root.FindToken(diagnostic.Location.SourceSpan.Start);
 
-		string baseName = RenameHelper.MakeFirstNotUnderscoreLower(
-			RenameHelper.AppendPrefixUnderscore(token.ValueText), 1 /* skip leading underscore */);
+		string baseName = StringHelper.MakeFirstNotUnderscoreLower(
+			StringHelper.AppendPrefixUnderscore(token.ValueText), 1 /* skip leading underscore */);
 		var index = 0;
 		var newName = baseName;
 

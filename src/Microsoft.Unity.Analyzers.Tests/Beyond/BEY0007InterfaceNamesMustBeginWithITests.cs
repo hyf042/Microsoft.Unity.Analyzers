@@ -16,7 +16,7 @@ public interface Foo
 {
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IFoo
@@ -37,7 +37,7 @@ public class Bar : Foo
 {
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IFoo
@@ -58,7 +58,7 @@ public interface iFoo
 {
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("iFoo").WithLocation(2, 18);
 
 		var fixedCode = @"
 public interface IiFoo
@@ -79,7 +79,7 @@ public class Bar
     }
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(4, 22);
 
 		await VerifyCSharpDiagnosticAsync(testCode, expected);
 	}
@@ -137,7 +137,7 @@ public class NativeMethodsClass
     }
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(6, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("FileOpenDialog").WithLocation(6, 22);
 
 		var fixedCode = @"
 using System.Runtime.InteropServices;
@@ -187,7 +187,7 @@ public interface IFoo1
 
 public interface IFoo { }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(2, 18);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -205,7 +205,7 @@ public interface IFoo
     int IFoo { get; }
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(2, 18);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(2, 18);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -231,7 +231,7 @@ public class Outer
     public interface IFoo { }
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -253,7 +253,7 @@ public class IFoo
     }
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -279,7 +279,7 @@ public class Outer
     private int IFoo => 0;
 }";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Foo").WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 
@@ -303,7 +303,7 @@ namespace System
 }
 ";
 
-		DiagnosticResult expected = ExpectDiagnostic().WithLocation(4, 22);
+		DiagnosticResult expected = ExpectDiagnostic().WithArguments("Disposable").WithLocation(4, 22);
 		await VerifyCSharpDiagnosticAndFixAsync(testCode, expected, fixedCode);
 	}
 }

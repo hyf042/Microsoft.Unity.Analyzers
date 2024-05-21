@@ -75,6 +75,12 @@ public class BEY0008PrivateMethodNamesMustBeginWithUnderscoreAnalyzer : Diagnost
 			return;
 		}
 
+		if (StringHelper.StartsWithIgnorePrefixUnderscore(identifier.ValueText, BeyondSettings.AllowedMethodPrefixes))
+		{
+			// If prefix exists in BeyondSettings.AllowedMethodPrefixes, don't analyze.
+			return;
+		}
+
 		if (NamedTypeHelpers.IsContainedInNativeMethodsClass(context.Node))
 		{
 			return;
@@ -137,7 +143,7 @@ public class BEY0008PrivateMethodNamesMustBeginWithUnderscoreCodeFix : CodeFixPr
 			}
 
 			// Append prefix underscore if not present
-			originalName = RenameHelper.AppendPrefixUnderscore(originalName);
+			originalName = StringHelper.AppendPrefixUnderscore(originalName);
 
 			var baseName = originalName.TrimStart('_');
 			if (baseName.Length == 0)

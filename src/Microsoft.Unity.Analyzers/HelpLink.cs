@@ -9,6 +9,6 @@ internal static class HelpLink
 {
 	public static string ForDiagnosticId(string ruleId)
 	{
-		return $"https://github.com/microsoft/Microsoft.Unity.Analyzers/blob/main/doc/{ruleId}.md";
+		return $"http://perforce.int.hypergryph.com/files/DM42.Beyond.Project/Main/Beyond_Mainline/ExternalTools/Microsoft.Unity.Analyzers/doc/{ruleId}.md";
 	}
 }

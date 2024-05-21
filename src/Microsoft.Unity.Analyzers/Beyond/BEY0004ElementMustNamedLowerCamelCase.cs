@@ -254,6 +254,12 @@ public class BEY0004ElementMustNamedLowerCamelCaseAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
+		if (StringHelper.StartsWithIgnorePrefixUnderscore(name, BeyondSettings.AllowedVariablePrefixes))
+		{
+			// If prefix exists in BeyondSettings.AllowedVariablePrefixes, don't analyze.
+			return;
+		}
+
 		if (NamedTypeHelpers.IsContainedInNativeMethodsClass(context.Node))
 		{
 			// don't analyze elements in NativeMethods classes
