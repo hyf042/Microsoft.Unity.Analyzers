@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using Microsoft.Unity.Analyzers.StyleCop;
 
 namespace Microsoft.Unity.Analyzers
