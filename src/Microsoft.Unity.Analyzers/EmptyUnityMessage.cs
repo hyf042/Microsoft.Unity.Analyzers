@@ -14,7 +14,9 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.Unity.Analyzers.Resources;
+// BEYOND modify begin
 using Microsoft.Unity.Analyzers.StyleCop;
+// BEYOND modify end
 
 namespace Microsoft.Unity.Analyzers;
 
@@ -54,10 +56,12 @@ public class EmptyUnityMessageAnalyzer : DiagnosticAnalyzer
 		if (method.Body.Statements.Count > 0)
 			return;
 
+		// BEYOND modify begin
 		if (!UnityHelper.CheckIsUnityMessage(context, method))
 			return;
 
 		context.ReportDiagnostic(Diagnostic.Create(Rule, method.Identifier.GetLocation(), method.Identifier.ValueText));
+		// BEYOND modify end
 	}
 }
 

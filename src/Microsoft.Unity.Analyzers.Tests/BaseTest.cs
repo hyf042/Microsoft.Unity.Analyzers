@@ -21,6 +21,7 @@ namespace Microsoft.Unity.Analyzers.Tests;
 public abstract class BaseDiagnosticVerifierTest<TAnalyzer> : DiagnosticVerifier
 	where TAnalyzer : DiagnosticAnalyzer, new()
 {
+	// BEYOND modify begin
 	internal const string InterfaceTest = @"
 using UnityEngine;
 
@@ -34,6 +35,7 @@ class Failure : MonoBehaviour, IFailure
     void IFailure.FixedUpdate() {}
 }
 ";
+	// BEYOND modify end
 
 	[Fact]
 	public async Task DoNotFailWithInterfaceMembers()

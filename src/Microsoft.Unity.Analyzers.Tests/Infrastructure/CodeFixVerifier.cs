@@ -19,10 +19,13 @@ namespace Microsoft.Unity.Analyzers.Tests;
 
 public abstract class CodeFixVerifier : DiagnosticVerifier
 {
+	// BEYOND modify begin
 	protected virtual bool IgnoreLineEndingDifferences => true;
+	// BEYOND modify end
 
 	protected abstract CodeFixProvider GetCSharpCodeFixProvider();
 
+	// BEYOND modify begin
 	protected async Task VerifyCSharpDiagnosticAndFixAsync(string source, DiagnosticResult expected, string fixedSource)
 	{
 		await VerifyCSharpDiagnosticAndFixAsync(source, new[] { expected }, fixedSource);
@@ -33,6 +36,7 @@ public abstract class CodeFixVerifier : DiagnosticVerifier
 		await VerifyCSharpDiagnosticAsync(source, expected);
 		await VerifyCSharpFixAsync(source, fixedSource);
 	}
+	// BEYOND modify end
 
 	protected Task VerifyCSharpFixAsync(string oldSource, string newSource, int? codeFixIndex = null, bool allowNewCompilerDiagnostics = false)
 	{
@@ -98,7 +102,9 @@ public abstract class CodeFixVerifier : DiagnosticVerifier
 
 		//after applying all of the code fixes, compare the resulting string to the inputted one
 		var actual = await GetStringFromDocumentAsync(document);
+		// BEYOND modify begin
 		Assert.Equal(newSource, actual, ignoreLineEndingDifferences: IgnoreLineEndingDifferences);
+		// BEYOND modify end
 	}
 
 	private static async Task<Document> ApplyFixAsync(Document document, CodeAction codeAction)

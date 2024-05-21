@@ -24,9 +24,11 @@ public abstract class DiagnosticVerifier
 	private const string CSharpDefaultFileExt = "cs";
 	private const string TestProjectName = "TestProject";
 
+	// BEYOND modify begin
 	protected virtual bool AllowUnsafe => false;
 	protected virtual bool ExpectErrorAsDiagnosticResult => false;
 	protected virtual string[] DisabledDiagnostics => [];
+	// BEYOND modify end
 
 	protected abstract DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer();
 
@@ -180,7 +182,7 @@ public abstract class DiagnosticVerifier
 				}
 				else
 				{
-					Assert.True(location.IsInSource, $"Test base does not currently handle diagnostics in metadata locations. ExpectDiagnostic in metadata: {diagnostics[i]}\r\n");
+					Assert.True(location.IsInSource, $"Test base does not currently handle diagnostics in metadata locations. Diagnostic in metadata: {diagnostics[i]}\r\n");
 
 					var syntaxTree = diagnostics[i].Location.SourceTree;
 					Assert.NotNull(syntaxTree);
@@ -238,9 +240,12 @@ public abstract class DiagnosticVerifier
 			var analyzerExceptions = new List<Exception>();
 			var analyzerOptions = new CompilationWithAnalyzersOptions(options, (e, _, _) => analyzerExceptions.Add(e), true, true, true);
 
+			// BEYOND modify begin
 			var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, reportSuppressedDiagnostics: true, allowUnsafe: AllowUnsafe);
+			// BEYOND modify end
 			var specificDiagnosticOptions = compilationOptions.SpecificDiagnosticOptions;
 
+			// BEYOND modify begin
 			// Set disabled diagnostics as suppressed for this verifier
 			if (DisabledDiagnostics != null)
 			{
@@ -249,6 +254,7 @@ public abstract class DiagnosticVerifier
 					specificDiagnosticOptions = specificDiagnosticOptions.SetItem(diagnosticId, ReportDiagnostic.Suppress);
 				}
 			}
+			// BEYOND modify end
 
 			// Force all tested and related diagnostics to be enabled
 			foreach (var descriptor in analyzers.SelectMany(a => a.SupportedDiagnostics))
@@ -260,21 +266,25 @@ public abstract class DiagnosticVerifier
 
 			var allDiagnostics = await compilationWithAnalyzers.GetAllDiagnosticsAsync();
 			var errors = allDiagnostics.Where(d => d.Severity == DiagnosticSeverity.Error).ToList();
+			// BEYOND modify begin
 			if (!ExpectErrorAsDiagnosticResult)
 			{
 				foreach (var error in errors)
 					Assert.Fail($"Line {error.Location.GetLineSpan().StartLinePosition.Line}: {error.GetMessage()}");
 			}
+			// BEYOND modify end
 
 			foreach (var analyzerException in analyzerExceptions)
 				Assert.Fail(analyzerException.Message);
 
+			// BEYOND modify begin
 			var diags = allDiagnostics;
 			if (ExpectErrorAsDiagnosticResult)
 			{
 				diags.Except(errors);
 			}
 			diags.Where(d => d.Location.IsInSource); //only keep diagnostics related to a source location
+			// BEYOND modify end
 
 			foreach (var diag in diags)
 			{

@@ -181,6 +181,7 @@ namespace UnityEngine
 		public virtual void OnStateMachineEnter(Animator animator, int stateMachinePathHash) { }
 		public virtual void OnStateMachineExit(Animator animator, int stateMachinePathHash) { }
 
+		// BEYOND modify begin
 		public virtual void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
 		public virtual void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
 		public virtual void OnStateIK(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
@@ -188,6 +189,7 @@ namespace UnityEngine
 		public virtual void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex, Animations.AnimatorControllerPlayable controller) { }
 		public virtual void OnStateMachineEnter(Animator animator, int stateMachinePathHash, Animations.AnimatorControllerPlayable controller) { }
 		public virtual void OnStateMachineExit(Animator animator, int stateMachinePathHash, Animations.AnimatorControllerPlayable controller) { }
+		// BEYOND modify end
 	}
 
 	class Texture2D
@@ -605,10 +607,12 @@ namespace UnityEngine
 	}
 }
 
+// BEYOND modify begin
 namespace UnityEngine.Animations
 {
 	class AnimatorControllerPlayable { }
 }
+// BEYOND modify end
 
 namespace UnityEngine.EventSystems
 {
@@ -695,10 +699,12 @@ namespace UnityEditor.Callbacks
 	class DidReloadScripts : Attribute { }
 }
 
+// BEYOND modify begin
 namespace UnityEditor.VersionControl
 {
 	enum FileMode;
 }
+// BEYOND modify end
 
 namespace UnityEditor
 {
@@ -706,10 +712,12 @@ namespace UnityEditor
 	using UnityEngine.UIElements;
 	using AssetImporters;
 
+	// BEYOND modify begin
 	enum AssetDeleteResult;
 	enum AssetMoveResult;
 	enum RemoveAssetOptions;
 	enum StatusQueryOptions;
+	// BEYOND modify end
 
 	class AssetDatabase {}
 
@@ -761,6 +769,7 @@ namespace UnityEditor
 	{
 	}
 
+	// BEYOND modify begin
 	class AssetModificationProcessor
 	{
 		static bool CanOpenForEdit(string[] paths, List<string> outNotEditablePaths, StatusQueryOptions statusQueryOptions) { return false; }
@@ -772,6 +781,7 @@ namespace UnityEditor
 		static AssetMoveResult OnWillMoveAsset(string sourcePath, string destinationPath) { return default; }
 		static string[] OnWillSaveAssets(string[] paths) { return null; }
 	}
+	// BEYOND modify end
 
 	class AssetPostprocessor
 	{

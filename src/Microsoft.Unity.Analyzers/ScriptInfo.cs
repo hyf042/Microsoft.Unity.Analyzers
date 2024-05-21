@@ -23,7 +23,9 @@ internal readonly struct ScriptInfo(ITypeSymbol symbol)
 		typeof(UnityEditor.Editor),
 		typeof(UnityEngine.ScriptableObject),
 		typeof(UnityEngine.MonoBehaviour),
+		// BEYOND modify begin
 		typeof(UnityEditor.AssetModificationProcessor),
+		// BEYOND modify end
 		typeof(UnityEditor.AssetPostprocessor),
 		typeof(UnityEditor.AssetImporters.ScriptedImporter)
 	];

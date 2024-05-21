@@ -258,6 +258,7 @@ public sealed class Camera : MonoBehaviour
 		await VerifyCSharpDiagnosticAsync(test);
 	}
 
+	// BEYOND modify begin
 	[Fact]
 	public async Task ShouldNotWarnForOverride()
 	{
@@ -278,4 +279,5 @@ class StateMachine : StateMachineBehaviour
 
 		await VerifyCSharpDiagnosticAsync(test);
 	}
+	// BEYOND modify end
 }
