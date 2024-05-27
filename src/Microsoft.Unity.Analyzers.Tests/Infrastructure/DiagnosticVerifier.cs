@@ -28,6 +28,7 @@ public abstract class DiagnosticVerifier
 	protected virtual bool AllowUnsafe => false;
 	protected virtual bool ExpectErrorAsDiagnosticResult => false;
 	protected virtual string[] DisabledDiagnostics => [];
+	protected virtual string[] PreprocessorSymbols => [];
 	// BEYOND modify end
 
 	protected abstract DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer();
@@ -213,7 +214,9 @@ public abstract class DiagnosticVerifier
 
 	private Task<Diagnostic[]> GetSortedDiagnosticsAsync(AnalyzerVerificationContext context, string[] sources, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expected)
 	{
-		return GetSortedDiagnosticsFromDocumentsAsync(context, analyzer, GetDocuments(context, sources), expected);
+		// BEYOND modify begin
+		return GetSortedDiagnosticsFromDocumentsAsync(context, analyzer, GetDocuments(context, sources, PreprocessorSymbols), expected);
+		// BEYOND modify end
 	}
 
 	protected async Task<Diagnostic[]> GetSortedDiagnosticsFromDocumentsAsync(AnalyzerVerificationContext context, DiagnosticAnalyzer analyzer, Document[] documents, params DiagnosticResult[] expected)
@@ -335,9 +338,13 @@ public abstract class DiagnosticVerifier
 		return [.. diagnostics.OrderBy(d => d.Location.SourceSpan.Start)];
 	}
 
-	private static Document[] GetDocuments(AnalyzerVerificationContext context, string[] sources)
+	// BEYOND modify begin
+	private static Document[] GetDocuments(AnalyzerVerificationContext context, string[] sources, string[] preprocessorSymbols)
+	// BEYOND modify end
 	{
-		var project = CreateProject(context, sources);
+		// BEYOND modify begin
+		var project = CreateProject(context, sources, preprocessorSymbols);
+		// BEYOND modify end
 		var documents = project.Documents.ToArray();
 
 		if (sources.Length != documents.Length)
@@ -348,10 +355,12 @@ public abstract class DiagnosticVerifier
 		return documents;
 	}
 
-	protected static Document CreateDocument(AnalyzerVerificationContext context, string source)
+	// BEYOND modify begin
+	protected static Document CreateDocument(AnalyzerVerificationContext context, string source, string[] preprocessorSymbols)
 	{
-		return CreateProject(context, [source]).Documents.First();
+		return CreateProject(context, [source], preprocessorSymbols).Documents.First();
 	}
+	// BEYOND modify end
 
 	protected static IEnumerable<string> UnityAssemblies()
 	{
@@ -379,7 +388,9 @@ public abstract class DiagnosticVerifier
 		yield return Path.Combine(template2dScriptAssemblies, "Unity.Mathematics.dll");
 	}
 
-	private static Project CreateProject(AnalyzerVerificationContext context, string[] sources)
+	// BEYOND modify begin
+	private static Project CreateProject(AnalyzerVerificationContext context, string[] sources, string[] preprocessorSymbols)
+	// BEYOND modify end
 	{
 		var projectId = ProjectId.CreateNewId(TestProjectName);
 
@@ -388,7 +399,9 @@ public abstract class DiagnosticVerifier
 			.AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp);
 
 		solution = UnityAssemblies().Aggregate(solution, (current, dll) => current.AddMetadataReference(projectId, MetadataReference.CreateFromFile(dll)));
-		solution = solution.WithProjectParseOptions(projectId, new CSharpParseOptions(context.LanguageVersion));
+		// BEYOND modify begin
+		solution = solution.WithProjectParseOptions(projectId, new CSharpParseOptions(context.LanguageVersion, preprocessorSymbols: preprocessorSymbols));
+		// BEYOND modify end
 
 		var count = 0;
 		foreach (var source in sources)

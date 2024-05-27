@@ -725,4 +725,16 @@
   <data name="BEY0011NonPublicUnitySerializeFieldNamesMustBeginWithUnderscoreDiagnosticTitle" xml:space="preserve">
     <value>Non-public unity [SerializeField] should begin with '_'</value>
   </data>
+  <data name="BEY0012LinqUsingDisallowedCodeFixTitle" xml:space="preserve">
+    <value>Remove using Linq</value>
+  </data>
+  <data name="BEY0012LinqUsingDisallowedDiagnosticDescription" xml:space="preserve">
+    <value>Linq should not be used in runtime (not UNITY_EDITOR nor BEYOND_DEBUG) code.</value>
+  </data>
+  <data name="BEY0012LinqUsingDisallowedDiagnosticMessageFormat" xml:space="preserve">
+    <value>Using Linq '{0}' is not allowed in runtime (not UNITY_EDITOR nor BEYOND_DEBUG) code</value>
+  </data>
+  <data name="BEY0012LinqUsingDisallowedDiagnosticTitle" xml:space="preserve">
+    <value>Using Linq is not allowed in runtime (not UNITY_EDITOR nor BEYOND_DEBUG) code</value>
+  </data>
 </root>
