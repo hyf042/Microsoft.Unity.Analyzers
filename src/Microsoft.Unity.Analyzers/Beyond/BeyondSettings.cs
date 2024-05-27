@@ -14,6 +14,6 @@ namespace Microsoft.Unity.Analyzers
 			new IndentationSettings(4 /* indentationSize */, 4 /* tabSize */, false /* useTabs */);
 		internal readonly static ImmutableArray<string> AllowedNamespaceComponents = ImmutableArray<string>.Empty;
 		internal readonly static ImmutableArray<string> AllowedMethodPrefixes = ImmutableArray<string>.Empty;
-		internal readonly static ImmutableArray<string> AllowedVariablePrefixes = ImmutableArray.Create("UI");
+		internal readonly static ImmutableArray<string> AllowedVariablePrefixes = ImmutableArray.Create("UI", "ID");
 	}
 }

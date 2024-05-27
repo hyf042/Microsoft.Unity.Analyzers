@@ -9,7 +9,7 @@ ID | Title | Category
 [BEY0005](BEY0005.md) | Element should be named with UpperPascalCase style | Maintainability
 [BEY0006](BEY0006.md) | Element should be named with ALL_CAPS style | Maintainability
 [BEY0007](BEY0007.md) | Interface names should begin with I | Maintainability
-[BEY0008](BEY0008.md) | Private method should be named with _UpperPascalCase with prefix '_' | Maintainability
+[BEY0008](BEY0008.md) | Private method should be named with \_UpperPascalCase with prefix '_' | Maintainability
 [BEY0009](BEY0009.md) | Static field name should begin with 's_' | Maintainability
 [BEY0010](BEY0010.md) | Non-public field names should begin with 'm_' | Maintainability
 [BEY0011](BEY0011.md) | Non-public unity [SerializeField] should begin with '_' | Maintainability
