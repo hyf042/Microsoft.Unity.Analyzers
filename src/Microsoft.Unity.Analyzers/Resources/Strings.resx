@@ -737,4 +737,28 @@
   <data name="BEY0012LinqUsingDisallowedDiagnosticTitle" xml:space="preserve">
     <value>Using Linq is not allowed in runtime (not UNITY_EDITOR nor BEYOND_DEBUG) code</value>
   </data>
+  <data name="BEY0013UnityDebugLogDisallowedCodeFixTitle" xml:space="preserve">
+    <value>Use DLogger.Log() instead of Debug.Log() in Beyond</value>
+  </data>
+  <data name="BEY0013UnityDebugLogDisallowedDiagnosticDescription" xml:space="preserve">
+    <value>Debug.Log() should not be used in Beyond, use DLogger.Log() instead.</value>
+  </data>
+  <data name="BEY0013UnityDebugLogDisallowedDiagnosticMessageFormat" xml:space="preserve">
+    <value>Using '{0}' is not allowed in Beyond, use DLogger.Log() instead</value>
+  </data>
+  <data name="BEY0013UnityDebugLogDisallowedDiagnosticTitle" xml:space="preserve">
+    <value>Use DLogger.Log() instead of Debug.Log() in Beyond</value>
+  </data>
+  <data name="BEY0014DLoggerInterpolatedStringDisallowedCodeFixTitle" xml:space="preserve">
+    <value>Use params instead of '$' interpolated string in DLogger.Log()</value>
+  </data>
+  <data name="BEY0014DLoggerInterpolatedStringDisallowedDiagnosticDescription" xml:space="preserve">
+    <value>'$' interpolated string is not allowed in DLogger.Log(), please use params instead.</value>
+  </data>
+  <data name="BEY0014DLoggerInterpolatedStringDisallowedDiagnosticMessageFormat" xml:space="preserve">
+    <value>'$' interpolated string is not allowed in DLogger.Log(), please use params instead</value>
+  </data>
+  <data name="BEY0014DLoggerInterpolatedStringDisallowedDiagnosticTitle" xml:space="preserve">
+    <value>'$' interpolated string is not allowed in DLogger.Log()</value>
+  </data>
 </root>

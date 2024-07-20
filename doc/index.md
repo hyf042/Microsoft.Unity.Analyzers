@@ -13,6 +13,9 @@ ID | Title | Category
 [BEY0009](BEY0009.md) | Static field name should begin with 's_' | Maintainability
 [BEY0010](BEY0010.md) | Non-public field names should begin with 'm_' | Maintainability
 [BEY0011](BEY0011.md) | Non-public unity [SerializeField] should begin with '_' | Maintainability
+[BEY0012](BEY0012.md) | Using Linq is not allowed in runtime (not UNITY_EDITOR nor BEYOND_DEBUG) code | Performance
+[BEY0013](BEY0013.md) | Use DLogger.Log() instead of Debug.Log() in Beyond | Maintainability
+[BEY0014](BEY0014.md) | '$' interpolated string is not allowed in DLogger.Log() | Maintainability
 
 # Unity Diagnostic Analyzers
 

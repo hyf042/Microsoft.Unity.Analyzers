@@ -26,9 +26,9 @@ public class BEY0012LinqUsingDisallowedAnalyzer : DiagnosticAnalyzer
 		id: RuleId,
 		title: Strings.BEY0012LinqUsingDisallowedDiagnosticTitle,
 		messageFormat: Strings.BEY0012LinqUsingDisallowedDiagnosticMessageFormat,
-		category: DiagnosticCategory.Correctness,
+		category: DiagnosticCategory.Performance,
 		defaultSeverity: DiagnosticSeverity.Info,
-		isEnabledByDefault: true,
+		isEnabledByDefault: false,
 		helpLinkUri: HelpLink.ForDiagnosticId(RuleId),
 		description: Strings.BEY0012LinqUsingDisallowedDiagnosticDescription);
 
@@ -39,7 +39,6 @@ public class BEY0012LinqUsingDisallowedAnalyzer : DiagnosticAnalyzer
 		context.EnableConcurrentExecution();
 		context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
 
-		//context.RegisterSyntaxNodeAction(HandleUsingDirective, SyntaxKind.UsingDirective);
 		context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 	}
 
